@@ -1,0 +1,14 @@
+# Enforce LF for text data files
+*.jsonl text eol=lf
+*.json  text eol=lf
+*.csv   text eol=lf
+
+# Treat common binary formats as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+
+# Ensure images tracked by Git LFS if used
+# (run `git lfs track "*.jpg"` and similar after installing Git LFS)

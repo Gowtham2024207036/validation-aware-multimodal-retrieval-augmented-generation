@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Conda
+.env
+.venv
+conda-meta/
+
+# Large Data
+data/raw/images/
+data/processed/
+qdrant_storage/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Repository large-data patterns
+dataset/
+embeddings/
+models/
+indexes/
+data/raw/*.jsonl
+data/processed/*.jsonl
+*.sqlite
+*.db

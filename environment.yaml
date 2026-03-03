@@ -1,0 +1,19 @@
+name: mmrag
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+  - pip
+  - pip:
+      - sentence-transformers
+      - qdrant-client
+      - transformers
+      - tqdm
+      - pandas
+      - pillow
