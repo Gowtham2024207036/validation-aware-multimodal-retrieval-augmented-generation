@@ -33,6 +33,7 @@ import arch2_hybrid_rrf
 import arch3_metadata_filter
 import arch4_late_fusion
 import arch5_query_expansion
+import arch6_full_proposed
 
 TEST_SET_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -49,6 +50,7 @@ ARCHITECTURES = {
     3: ("Metadata-Filtered RAG",      arch3_metadata_filter),
     4: ("Late Fusion RAG",            arch4_late_fusion),
     5: ("Query Expansion RAG",        arch5_query_expansion),
+    6: ("Full Proposed (CDE)",         arch6_full_proposed),
 }
 
 
@@ -277,7 +279,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate RAG architectures")
     parser.add_argument("--sample", type=int, default=50,
                         help="Number of test questions to evaluate (default: 50)")
-    parser.add_argument("--arch",   type=int, nargs="+", default=[1,2,3,4,5],
+    parser.add_argument("--arch",   type=int, nargs="+", default=[1,2,3,4,5,6],
                         help="Architecture IDs to run (default: all 5)")
     args = parser.parse_args()
 

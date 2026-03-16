@@ -31,7 +31,21 @@ scripts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 sys.path.insert(0, scripts_dir)
 
 from base_retriever import SharedModels
-import arch2_hybrid_rrf as retriever
+import arch1_naive
+import arch2_hybrid_rrf
+import arch3_metadata_filter
+import arch4_late_fusion
+import arch5_query_expansion
+import arch6_full_proposed
+
+ARCHITECTURES = {
+    1: ("Naive Multimodal RAG",   arch1_naive),
+    2: ("Hybrid RAG + RRF",       arch2_hybrid_rrf),
+    3: ("Metadata-Filtered RAG",  arch3_metadata_filter),
+    4: ("Late Fusion RAG",        arch4_late_fusion),
+    5: ("Query Expansion RAG",    arch5_query_expansion),
+    6: ("Full Proposed (CDE)",    arch6_full_proposed),
+}
 
 from lmstudio_client import health_check, chat
 from prompt_builder  import (
@@ -67,7 +81,8 @@ def run_pipeline(
 
     # --- Step 1: Retrieve ---
     t0          = time.time()
-    results     = retriever.retrieve(query, models)
+    arch_module = ARCHITECTURES[arch_id][1]
+    results     = arch_module.retrieve(query, models)
     text_hits   = results.get("text",  [])
     image_hits  = results.get("image", [])
     retr_time   = time.time() - t0
