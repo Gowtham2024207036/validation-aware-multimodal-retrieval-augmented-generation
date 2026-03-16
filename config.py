@@ -1,51 +1,3 @@
-# import torch
-
-# # -----------------------------
-# # Qdrant Configuration
-# # -----------------------------
-
-# QDRANT_HOST = "localhost"
-# QDRANT_PORT = 6333
-
-# TEXT_COLLECTION = "text_collection"
-# IMAGE_COLLECTION = "image_collection"
-# TABLE_COLLECTION = "table_collection"
-
-# # -----------------------------
-# # Model Configuration
-# # -----------------------------
-
-# TEXT_MODEL = "sentence-transformers/all-mpnet-base-v2"
-# IMAGE_MODEL = "openai/clip-vit-base-patch32"
-
-# # -----------------------------
-# # Vector Dimensions
-# # -----------------------------
-
-# TEXT_VECTOR_SIZE = 768
-# IMAGE_VECTOR_SIZE = 512
-
-# # -----------------------------
-# # Retrieval Configuration
-# # -----------------------------
-
-# TOP_K_TEXT = 8
-# TOP_K_IMAGE = 4
-# TOP_K_TABLE = 3
-
-# # -----------------------------
-# # Device Configuration
-# # -----------------------------
-
-# DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-
-# # -----------------------------
-# # Paths
-# # -----------------------------
-
-# DOCUMENT_FOLDER = "sample_docs"
-# VECTOR_STORAGE = "storage"
-
 import torch
 import os
 
@@ -59,10 +11,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # -----------------------------
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333
+
+
 TEXT_COLLECTION = "text_collection"
 IMAGE_COLLECTION = "image_collection"
 TABLE_COLLECTION = "table_collection"
 
+DATA_DIR = "data/raw"
+IMAGE_DIR = os.path.join(DATA_DIR, "images")
 # -----------------------------
 # Model Configuration
 # -----------------------------
@@ -81,6 +37,7 @@ IMAGE_VECTOR_SIZE = 512
 TOP_K_TEXT = 8
 TOP_K_IMAGE = 4
 TOP_K_TABLE = 3
+RERANK_TOP_K = 5
 
 # -----------------------------
 # Device Configuration

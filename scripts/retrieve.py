@@ -34,9 +34,7 @@ class Retriever:
             print(f"❌ Error initializing retriever: {e}")
             raise
 
-    # --------------------------------------------------
-    # TEXT → TEXT SEARCH
-    # --------------------------------------------------
+ 
     def search_text(self, query: str, top_k: int = None) -> List[Any]:
 
         top_k = top_k or config.TOP_K_TEXT
@@ -86,10 +84,7 @@ class Retriever:
         except Exception as e:
             print(f"❌ Error searching images by text: {e}")
             raise
-
-    # --------------------------------------------------
-    # IMAGE → IMAGE SEARCH
-    # --------------------------------------------------
+-
     def search_images_by_image(self, image_path: str, top_k: int = None) -> List[Any]:
 
         top_k = top_k or config.TOP_K_IMAGE
@@ -119,9 +114,7 @@ class Retriever:
             print(f"❌ Error searching images by image: {e}")
             raise
 
-    # --------------------------------------------------
-    # MULTIMODAL SEARCH
-    # --------------------------------------------------
+
     def search_all(self, query: str) -> Dict[str, List[Any]]:
 
         text_results = self.search_text(query)
