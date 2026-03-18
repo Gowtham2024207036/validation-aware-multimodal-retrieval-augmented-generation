@@ -1,21 +1,18 @@
 """
 rag_pipeline.py
 ---------------
-Complete RAG pipeline: Retrieval → Prompt Building → Generation
-
-Combines your existing hybrid retriever (Architecture 2) with
-LM Studio's Qwen2.5-VL for the generation step.
-
-Three generation modes:
-  - text_only   : context = retrieved text passages only
-  - image_only  : context = retrieved images only (vision model reads tables)
-  - multimodal  : context = text + images (recommended)
+Full end-to-end RAG pipeline: Retrieve → Build Prompt → Generate.
 
 Usage:
-    python rag_pipeline.py
-    python rag_pipeline.py --mode text_only
-    python rag_pipeline.py --mode image_only
-    python rag_pipeline.py --mode multimodal
+    # Single interactive query
+    python scripts/rag_pipeline.py --arch 2 --mode multimodal
+
+    # Single query from command line
+    python scripts/rag_pipeline.py --arch 6 --mode multimodal --query "What is COSTCO revenue FY2021?"
+
+    # Batch evaluation on test_set.jsonl
+    python scripts/rag_pipeline.py --arch 2 --mode multimodal --batch --sample 20
+    python scripts/rag_pipeline.py --arch 6 --mode multimodal --batch --sample 20
 """
 
 import os
@@ -23,14 +20,25 @@ import sys
 import json
 import argparse
 import time
+from pathlib import Path
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import from your existing scripts directory
-scripts_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts")
-sys.path.insert(0, scripts_dir)
-
 from base_retriever import SharedModels
+from lmstudio_client import (
+    check_connection,
+    generate_text_only,
+    generate_with_images,
+    LM_STUDIO_BASE_URL,
+    LM_STUDIO_MODEL,
+)
+from prompt_builder import (
+    SYSTEM_PROMPT,
+    build_text_only_prompt,
+    build_multimodal_prompt,
+    format_answer,
+)
+
 import arch1_naive
 import arch2_hybrid_rrf
 import arch3_metadata_filter
@@ -47,137 +55,176 @@ ARCHITECTURES = {
     6: ("Full Proposed (CDE)",    arch6_full_proposed),
 }
 
-from lmstudio_client import health_check, chat
-from prompt_builder  import (
-    build_text_only_prompt,
-    build_image_only_prompt,
-    build_multimodal_prompt,
-)
+IMAGES_ROOT   = Path("data/raw")
+TEST_SET_PATH = Path("data/raw/test_set.jsonl")
+RESULTS_DIR   = Path("data/results/generated_answers")
 
 
-def run_pipeline(
+# ------------------------------------------------------------------ #
+# Single query
+# ------------------------------------------------------------------ #
+
+def run_single(
     query:    str,
+    arch_id:  int,
+    mode:     str,
     models:   SharedModels,
-    mode:     str  = "multimodal",
     verbose:  bool = True,
 ) -> dict:
-    """
-    Full RAG pipeline for a single query.
+    """Run retrieval + generation for one query. Returns result dict."""
+    arch_name, arch_module = ARCHITECTURES[arch_id]
 
-    Args:
-        query   : the user's financial question
-        models  : loaded SharedModels instance (retriever)
-        mode    : "text_only" | "image_only" | "multimodal"
-        verbose : print intermediate steps
+    # Step 1 — Retrieve
+    t0     = time.time()
+    result = arch_module.retrieve(query, models)
+    t_ret  = time.time() - t0
 
-    Returns dict with keys:
-        query, mode, text_hits, image_hits, messages, answer, latency_s
-    """
-    if verbose:
-        print(f"\n{'='*60}")
-        print(f"  QUERY: {query}")
-        print(f"  MODE : {mode}")
-        print("="*60)
-
-    # --- Step 1: Retrieve ---
-    t0          = time.time()
-    arch_module = ARCHITECTURES[arch_id][1]
-    results     = arch_module.retrieve(query, models)
-    text_hits   = results.get("text",  [])
-    image_hits  = results.get("image", [])
-    retr_time   = time.time() - t0
+    text_hits  = result.get("text",  [])
+    image_hits = result.get("image", [])
 
     if verbose:
-        print(f"\n  Retrieved: {len(text_hits)} text chunks, {len(image_hits)} images ({retr_time:.2f}s)")
+        print(f"\n  [{arch_name}] Retrieved: {len(text_hits)} text, "
+              f"{len(image_hits)} images  ({t_ret*1000:.0f}ms)")
         for h in text_hits:
-            print(f"    [TEXT]  {h.get('doc_name')} | {(h.get('text') or '')[:80]}...")
+            print(f"    TEXT:  {h.get('doc_name')} | {(h.get('text') or '')[:80]}...")
         for h in image_hits:
-            print(f"    [IMAGE] {h.get('doc_name')} | {h.get('image_path')}")
+            print(f"    IMAGE: {h.get('doc_name')} | {h.get('image_path')}")
 
-    # --- Step 2: Build prompt ---
-    if mode == "text_only":
-        messages = build_text_only_prompt(query, text_hits)
-    elif mode == "image_only":
-        messages = build_image_only_prompt(query, image_hits)
-    else:  # multimodal (default)
-        messages = build_multimodal_prompt(query, text_hits, image_hits)
+    # Step 2 — Build prompt + Generate
+    t1 = time.time()
+
+    # Build prompt — always include image captions as text context
+    user_text, image_paths = build_multimodal_prompt(query, text_hits, image_hits)
+
+    if mode == "multimodal" and image_paths:
+        answer = generate_with_images(
+            system_prompt = SYSTEM_PROMPT,
+            user_text     = user_text,
+            image_paths   = image_paths,
+            images_root   = str(IMAGES_ROOT),
+            max_tokens    = 1024,
+            temperature   = 0.1,
+        )
+    else:
+        # text_only mode OR no images retrieved — always reliable
+        answer = generate_text_only(
+            system_prompt = SYSTEM_PROMPT,
+            user_text     = user_text,
+            max_tokens    = 1024,
+            temperature   = 0.1,
+        )
+
+    # Safety guard — should never happen but prevents None in output
+    if answer is None or not isinstance(answer, str):
+        answer = generate_text_only(
+            system_prompt = SYSTEM_PROMPT,
+            user_text     = user_text,
+            max_tokens    = 1024,
+            temperature   = 0.1,
+        )
+
+    t_gen = time.time() - t1
 
     if verbose:
-        print(f"\n  Prompt built ({mode} mode) — sending to LM Studio...")
+        print(f"\n  Answer ({t_gen*1000:.0f}ms):\n  {answer}")
 
-    # --- Step 3: Generate ---
-    t1      = time.time()
-    answer  = chat(messages, temperature=0.1, max_tokens=512)
-    gen_time = time.time() - t1
-
-    if verbose:
-        print(f"\n  ANSWER ({gen_time:.2f}s):")
-        print(f"  {answer}")
-
-    return {
-        "query":      query,
-        "mode":       mode,
-        "text_hits":  [{"doc_name": h.get("doc_name"), "text": (h.get("text") or "")[:200]}
-                       for h in text_hits],
-        "image_hits": [{"doc_name": h.get("doc_name"), "image_path": h.get("image_path")}
-                       for h in image_hits],
-        "answer":     answer,
-        "latency":    {
-            "retrieval_s":  round(retr_time,  3),
-            "generation_s": round(gen_time,   3),
-            "total_s":      round(retr_time + gen_time, 3),
-        },
+    return format_answer(query, answer, text_hits, image_hits, arch_name, mode) | {
+        "retrieval_ms":  round(t_ret * 1000),
+        "generation_ms": round(t_gen * 1000),
+        "total_ms":      round((t_ret + t_gen) * 1000),
     }
 
 
-def run_demo(mode: str = "multimodal"):
-    """Run a demo with sample financial questions."""
+# ------------------------------------------------------------------ #
+# Batch mode
+# ------------------------------------------------------------------ #
 
-    print("\nChecking LM Studio connection...")
-    if not health_check():
-        print(
-            "ERROR: Cannot connect to LM Studio or model not loaded.\n"
-            "  1. Open LM Studio\n"
-            "  2. Load the model: qwen2.5-vl-7b-instruct\n"
-            "  3. Start the local server (port 1234)\n"
-            "  4. Re-run this script"
-        )
+def run_batch(arch_id: int, mode: str, models: SharedModels, sample: int = 20):
+    """Run pipeline on first `sample` questions from test_set.jsonl."""
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    if not TEST_SET_PATH.exists():
+        print(f"ERROR: {TEST_SET_PATH} not found.")
         return
 
-    print("LM Studio connected. Loading retrieval models...")
+    questions = []
+    with open(TEST_SET_PATH, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                questions.append(json.loads(line))
+    questions = questions[:sample]
+
+    arch_name = ARCHITECTURES[arch_id][0]
+    print(f"\nBatch run: arch={arch_id} ({arch_name}), mode={mode}, n={len(questions)}")
+
+    outputs = []
+    for i, q in enumerate(questions):
+        question = q.get("question", "")
+        if not question:
+            continue
+        print(f"\n[{i+1}/{len(questions)}] {question[:80]}")
+        result = run_single(question, arch_id, mode, models, verbose=True)
+        result["test_id"]        = q.get("test_id")
+        result["gold_quote_ids"] = q.get("gold_quote_ids", [])
+        result["reference"]      = q.get("reference_answer", "")
+        outputs.append(result)
+
+    out_path = RESULTS_DIR / f"arch{arch_id}_{mode}_{len(outputs)}q.json"
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(outputs, f, indent=2, ensure_ascii=False)
+
+    avg_ret = sum(r["retrieval_ms"]  for r in outputs) / max(len(outputs), 1)
+    avg_gen = sum(r["generation_ms"] for r in outputs) / max(len(outputs), 1)
+    print(f"\nSaved {len(outputs)} answers → {out_path}")
+    print(f"Avg retrieval: {avg_ret:.0f}ms | Avg generation: {avg_gen:.0f}ms")
+
+
+# ------------------------------------------------------------------ #
+# Main
+# ------------------------------------------------------------------ #
+
+def main():
+    parser = argparse.ArgumentParser(description="End-to-end Multimodal RAG Pipeline")
+    parser.add_argument("--arch",   type=int, default=2, choices=[1,2,3,4,5,6])
+    parser.add_argument("--mode",   type=str, default="multimodal",
+                        choices=["text_only", "multimodal"])
+    parser.add_argument("--query",  type=str, default=None,
+                        help="Single query string")
+    parser.add_argument("--batch",  action="store_true",
+                        help="Run batch on test_set.jsonl")
+    parser.add_argument("--sample", type=int, default=20,
+                        help="Number of questions for batch mode")
+    args = parser.parse_args()
+
+    # Check LM Studio
+    print(f"Checking LM Studio at {LM_STUDIO_BASE_URL}...")
+    if not check_connection():
+        print(f"ERROR: Cannot connect to LM Studio.")
+        print(f"  1. Open LM Studio")
+        print(f"  2. Load model: {LM_STUDIO_MODEL}")
+        print(f"  3. Start the local server")
+        sys.exit(1)
+    print(f"LM Studio connected. Model: {LM_STUDIO_MODEL}")
+
+    # Load retrieval models
+    print("\nLoading retrieval models...")
     models = SharedModels()
 
-    # Demo questions — mix of entity-specific and generic
-    demo_queries = [
-        "What is the Long-term Debt to Total Liabilities for COSTCO in FY2021?",
-        "What were the gross profit margins for BESTBUY in fiscal 2023?",
-        "Show me the revenue trend for NETFLIX across multiple years.",
-    ]
+    arch_name = ARCHITECTURES[args.arch][0]
+    print(f"Architecture: {args.arch} — {arch_name}")
+    print(f"Mode:         {args.mode}")
 
-    all_results = []
-    for query in demo_queries:
-        result = run_pipeline(query, models, mode=mode, verbose=True)
-        all_results.append(result)
-
-    # Save results
-    out_dir  = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "data", "results"
-    )
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, f"pipeline_demo_{mode}.json")
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(all_results, f, indent=2, ensure_ascii=False)
-    print(f"\n  Results saved to: {out_path}")
+    if args.batch:
+        run_batch(args.arch, args.mode, models, sample=args.sample)
+    else:
+        query = args.query or input("\nEnter your question: ").strip()
+        if not query:
+            print("No query provided.")
+            sys.exit(1)
+        print(f"\nQuery: {query}")
+        run_single(query, args.arch, args.mode, models, verbose=True)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--mode",
-        choices=["text_only", "image_only", "multimodal"],
-        default="multimodal",
-        help="Generation mode (default: multimodal)"
-    )
-    args = parser.parse_args()
-    run_demo(mode=args.mode)
+    main()

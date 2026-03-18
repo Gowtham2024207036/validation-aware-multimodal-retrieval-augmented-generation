@@ -1,0 +1,3732 @@
+{
+  "arch_id": 6,
+  "arch_name": "Full Proposed (CDE)",
+  "n_questions": 94,
+  "avg_text": {
+    "hit_rate": 0.2128,
+    "recall@3": 0.085,
+    "precision@3": 0.1028,
+    "mrr": 0.1613,
+    "ndcg@3": 0.1087
+  },
+  "avg_image": {
+    "hit_rate": 0.4255,
+    "recall@3": 0.2271,
+    "precision@3": 0.25,
+    "mrr": 0.3156,
+    "ndcg@3": 0.2474
+  },
+  "avg_combo": {
+    "hit_rate": 0.3298,
+    "recall@3": 0.143,
+    "precision@3": 0.1277,
+    "mrr": 0.2057,
+    "ndcg@3": 0.1456
+  },
+  "avg_latency_s": 1.472,
+  "per_query": [
+    {
+      "test_id": "TEST_10477",
+      "question": "How do the category-wise transaction volumes in online retail relate to the gros",
+      "gold_ids": [
+        "text6",
+        "image5",
+        "image4",
+        "image8"
+      ],
+      "text_ids": [
+        "text11",
+        "text8",
+        "text4"
+      ],
+      "image_ids": [
+        "image5",
+        "image5",
+        "image8"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.75,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.737
+    },
+    {
+      "test_id": "TEST_12150",
+      "question": "How many figures are shown in this guidebook to teach users \"Two-finger scrollin",
+      "gold_ids": [
+        "image2"
+      ],
+      "text_ids": [
+        "text4",
+        "text10",
+        "text8"
+      ],
+      "image_ids": [
+        "image3",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.433
+    },
+    {
+      "test_id": "TEST_4507",
+      "question": "What is the trend in 'Non-GAAP free cash flow' from 2013 to 2015, and how is it ",
+      "gold_ids": [
+        "text3",
+        "image1",
+        "text1"
+      ],
+      "text_ids": [
+        "text2",
+        "text6"
+      ],
+      "image_ids": [
+        "image4",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.471
+    },
+    {
+      "test_id": "TEST_12067",
+      "question": "What does the Bergen Maritime Museum offer to visitors?",
+      "gold_ids": [
+        "image2",
+        "text5"
+      ],
+      "text_ids": [
+        "text6",
+        "text4",
+        "text9"
+      ],
+      "image_ids": [
+        "image1",
+        "image5",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.404
+    },
+    {
+      "test_id": "TEST_11088",
+      "question": "How does Bank of America address environmental issues such as air pollution and ",
+      "gold_ids": [
+        "image3",
+        "text12",
+        "image1",
+        "text4"
+      ],
+      "text_ids": [
+        "text8",
+        "text6",
+        "text4"
+      ],
+      "image_ids": [
+        "image2",
+        "image5",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "latency_s": 1.512
+    },
+    {
+      "test_id": "TEST_12136",
+      "question": "How can you customize the watch face background on the HONOR Watch GS Pro using ",
+      "gold_ids": [
+        "text12",
+        "image1",
+        "image7"
+      ],
+      "text_ids": [
+        "text8",
+        "text4"
+      ],
+      "image_ids": [
+        "image4",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.415
+    },
+    {
+      "test_id": "TEST_8936",
+      "question": "How did the total credit card and home equity metrics change between 2019 and 20",
+      "gold_ids": [
+        "text9",
+        "text5",
+        "image4",
+        "image2",
+        "image1",
+        "text6"
+      ],
+      "text_ids": [
+        "text7"
+      ],
+      "image_ids": [
+        "image4",
+        "image3",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.16666666666666666,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.16666666666666666,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "latency_s": 1.464
+    },
+    {
+      "test_id": "TEST_9675",
+      "question": "What is the accuracy of DS-DST for the hotel-type slot?",
+      "gold_ids": [
+        "text7",
+        "image3"
+      ],
+      "text_ids": [
+        "text1",
+        "text8"
+      ],
+      "image_ids": [
+        "image7",
+        "image3",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.456
+    },
+    {
+      "test_id": "TEST_6913",
+      "question": "What is the estimated financial impact of Bank of America's air pollution emissi",
+      "gold_ids": [
+        "image7"
+      ],
+      "text_ids": [
+        "text4",
+        "text4",
+        "text12"
+      ],
+      "image_ids": [
+        "image2",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.446
+    },
+    {
+      "test_id": "TEST_8280",
+      "question": "How do views on Trump's handling of economic policy compare with perceptions of ",
+      "gold_ids": [
+        "text5",
+        "image4",
+        "text4",
+        "image1",
+        "text3"
+      ],
+      "text_ids": [
+        "text10"
+      ],
+      "image_ids": [
+        "image2",
+        "image4",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "latency_s": 1.534
+    },
+    {
+      "test_id": "TEST_9864",
+      "question": "How should the dishwasher be loaded to ensure optimal washing quality according ",
+      "gold_ids": [
+        "text9",
+        "image4",
+        "image1",
+        "text6",
+        "image3"
+      ],
+      "text_ids": [
+        "text9",
+        "text9",
+        "text2"
+      ],
+      "image_ids": [
+        "image4",
+        "image1",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7653606369886217
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7653606369886217
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7039180890341347
+      },
+      "latency_s": 1.413
+    },
+    {
+      "test_id": "TEST_9196",
+      "question": "What was the trend in gross profit as a percentage of total revenues from 2018 t",
+      "gold_ids": [
+        "text2",
+        "image1"
+      ],
+      "text_ids": [
+        "text4",
+        "text2",
+        "text7"
+      ],
+      "image_ids": [
+        "image3",
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "latency_s": 1.508
+    },
+    {
+      "test_id": "TEST_11732",
+      "question": "What are the key milestones in tracing diachronic semantic shifts from 2010 to 2",
+      "gold_ids": [
+        "text11",
+        "text5",
+        "image1",
+        "text1",
+        "text12",
+        "text10"
+      ],
+      "text_ids": [
+        "text7",
+        "text5"
+      ],
+      "image_ids": [
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.16666666666666666,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.16666666666666666,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.6666666666666666,
+        "mrr": 0.5,
+        "ndcg@3": 0.5307212739772434
+      },
+      "latency_s": 1.477
+    },
+    {
+      "test_id": "TEST_10648",
+      "question": "How does the inclusion of coreference information impact the performance of Enti",
+      "gold_ids": [
+        "image6",
+        "text3",
+        "text5",
+        "image8"
+      ],
+      "text_ids": [
+        "text10"
+      ],
+      "image_ids": [
+        "image6",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.5,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "latency_s": 1.457
+    },
+    {
+      "test_id": "TEST_11491",
+      "question": "What is the purpose of the combination (comb) layers in Figure 2?",
+      "gold_ids": [
+        "image6"
+      ],
+      "text_ids": [
+        "text2",
+        "text8"
+      ],
+      "image_ids": [
+        "image3",
+        "image6",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.6309297535714575
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.445
+    },
+    {
+      "test_id": "TEST_8929",
+      "question": "How did the sales of XGEVA\u00ae, Aranesp\u00ae, and KYPROLIS\u00ae change in the U.S. from 201",
+      "gold_ids": [
+        "image3",
+        "image5",
+        "image4"
+      ],
+      "text_ids": [
+        "text6",
+        "text4",
+        "text7"
+      ],
+      "image_ids": [
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.462
+    },
+    {
+      "test_id": "TEST_6874",
+      "question": "How did the net actuarial loss in postretirement benefit plans change from 2019 ",
+      "gold_ids": [
+        "text1",
+        "image7"
+      ],
+      "text_ids": [
+        "text5",
+        "text2",
+        "text12"
+      ],
+      "image_ids": [
+        "image3",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.448
+    },
+    {
+      "test_id": "TEST_7360",
+      "question": "What is the percentage growth in organic growth (OG) for 'Other businesses' from",
+      "gold_ids": [
+        "text11",
+        "image2"
+      ],
+      "text_ids": [
+        "text3",
+        "text7",
+        "text2"
+      ],
+      "image_ids": [
+        "image4",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.481
+    },
+    {
+      "test_id": "TEST_9655",
+      "question": "What task is on the top of the planning branch of the tree?",
+      "gold_ids": [
+        "image1"
+      ],
+      "text_ids": [
+        "text10",
+        "text7"
+      ],
+      "image_ids": [
+        "image5",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.429
+    },
+    {
+      "test_id": "TEST_4558",
+      "question": "What is the distribution of landline and cellphone interviews conducted among di",
+      "gold_ids": [
+        "text7",
+        "image3"
+      ],
+      "text_ids": [
+        "text5",
+        "text4",
+        "text8"
+      ],
+      "image_ids": [
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.444
+    },
+    {
+      "test_id": "TEST_11439",
+      "question": "How many languages are shown in the in-context examples for multi-lingual transl",
+      "gold_ids": [
+        "text11",
+        "image2"
+      ],
+      "text_ids": [
+        "text9"
+      ],
+      "image_ids": [
+        "image4",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.445
+    },
+    {
+      "test_id": "TEST_6925",
+      "question": "How did the total investment banking fees for the Total Corporation change from ",
+      "gold_ids": [
+        "text2",
+        "text3",
+        "image8"
+      ],
+      "text_ids": [
+        "text10"
+      ],
+      "image_ids": [
+        "image3",
+        "image2",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.465
+    },
+    {
+      "test_id": "TEST_5575",
+      "question": "How did the average production prices for crude oil and NGL per barrel change fr",
+      "gold_ids": [
+        "image5"
+      ],
+      "text_ids": [
+        "text10",
+        "text8",
+        "text5"
+      ],
+      "image_ids": [
+        "image1",
+        "image8",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.461
+    },
+    {
+      "test_id": "TEST_4553",
+      "question": "How do opinions on U.S. economic policies towards China differ by race?",
+      "gold_ids": [
+        "image5"
+      ],
+      "text_ids": [
+        "text7",
+        "text5",
+        "text3"
+      ],
+      "image_ids": [
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.478
+    },
+    {
+      "test_id": "TEST_5515",
+      "question": "How did the year-to-year changes in total revenue and pre-tax income compare acr",
+      "gold_ids": [
+        "text5",
+        "image2",
+        "image1",
+        "text2",
+        "text10",
+        "image5"
+      ],
+      "text_ids": [
+        "text8",
+        "text7",
+        "text6"
+      ],
+      "image_ids": [
+        "image1",
+        "image1",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.445
+    },
+    {
+      "test_id": "TEST_6225",
+      "question": "what is After-tax Return on Average Equity  for the fiscal year ending January 2",
+      "gold_ids": [
+        "image1",
+        "image5"
+      ],
+      "text_ids": [
+        "text9",
+        "text1",
+        "text6"
+      ],
+      "image_ids": [
+        "image7",
+        "image3",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.3065735963827292
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.445
+    },
+    {
+      "test_id": "TEST_5882",
+      "question": "What is the trend in PMI's cigarette shipment volumes by brand between 2019 and ",
+      "gold_ids": [
+        "text8",
+        "image3",
+        "image5"
+      ],
+      "text_ids": [
+        "text10",
+        "text8",
+        "text1"
+      ],
+      "image_ids": [
+        "image8",
+        "image3",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "latency_s": 1.487
+    },
+    {
+      "test_id": "TEST_5636",
+      "question": "Based on the information provided, which dialogue state tracking models showed a",
+      "gold_ids": [
+        "image1",
+        "image5"
+      ],
+      "text_ids": [
+        "text8",
+        "text7",
+        "text4"
+      ],
+      "image_ids": [
+        "image1",
+        "image2",
+        "image8"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.478
+    },
+    {
+      "test_id": "TEST_9892",
+      "question": "What is the Pier with the longest coast line?",
+      "gold_ids": [
+        "image2"
+      ],
+      "text_ids": [
+        "text9"
+      ],
+      "image_ids": [
+        "image1",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.6309297535714575
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.5
+      },
+      "latency_s": 1.462
+    },
+    {
+      "test_id": "TEST_4334",
+      "question": "Which source of supervision has the highest precision according to Table 2?",
+      "gold_ids": [
+        "image1",
+        "text1"
+      ],
+      "text_ids": [
+        "text1",
+        "text5",
+        "text8"
+      ],
+      "image_ids": [
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "latency_s": 1.476
+    },
+    {
+      "test_id": "TEST_11956",
+      "question": "According to the chart \"Levels of Analytics\", what are the four business analyst",
+      "gold_ids": [
+        "image4"
+      ],
+      "text_ids": [
+        "text1"
+      ],
+      "image_ids": [
+        "image2",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.489
+    },
+    {
+      "test_id": "TEST_7528",
+      "question": "How did the total sales and trading revenue excluding net DVA change from 2019 t",
+      "gold_ids": [
+        "image3",
+        "text12",
+        "image1",
+        "text4"
+      ],
+      "text_ids": [
+        "text7",
+        "text8",
+        "text4"
+      ],
+      "image_ids": [
+        "image1",
+        "image3",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7653606369886217
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "latency_s": 1.471
+    },
+    {
+      "test_id": "TEST_8786",
+      "question": "How did the impairment charges affect the profit attributable to ordinary shareh",
+      "gold_ids": [
+        "image1",
+        "image5",
+        "text6"
+      ],
+      "text_ids": [
+        "text7",
+        "text8"
+      ],
+      "image_ids": [
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "latency_s": 1.491
+    },
+    {
+      "test_id": "TEST_6202",
+      "question": "What types of discrimination are most commonly reported by women in STEM jobs co",
+      "gold_ids": [
+        "image6",
+        "text7"
+      ],
+      "text_ids": [
+        "text9",
+        "text12",
+        "text5"
+      ],
+      "image_ids": [
+        "image3",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.511
+    },
+    {
+      "test_id": "TEST_9045",
+      "question": "How did the sales and operating profit for Caterpillar's Machinery, Energy & Tra",
+      "gold_ids": [
+        "text9",
+        "image4",
+        "image1",
+        "text1",
+        "image3"
+      ],
+      "text_ids": [
+        "text8",
+        "text5",
+        "text7"
+      ],
+      "image_ids": [
+        "image1",
+        "image8",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7039180890341347
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.495
+    },
+    {
+      "test_id": "TEST_4804",
+      "question": "How did the revenue in Asia compare with the United States for the year 2020?",
+      "gold_ids": [
+        "image4"
+      ],
+      "text_ids": [
+        "text5"
+      ],
+      "image_ids": [
+        "image5",
+        "image4",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.6309297535714575
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.5
+      },
+      "latency_s": 1.469
+    },
+    {
+      "test_id": "TEST_10300",
+      "question": "How have public perceptions of government efforts to combat terrorism changed ov",
+      "gold_ids": [
+        "image4",
+        "text2",
+        "text3",
+        "image7",
+        "text6"
+      ],
+      "text_ids": [
+        "text3",
+        "text8"
+      ],
+      "image_ids": [
+        "image6",
+        "image6",
+        "image8"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.5,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "latency_s": 1.483
+    },
+    {
+      "test_id": "TEST_10134",
+      "question": "Which top-level page has the highest WPT DSL value, and what does this indicate?",
+      "gold_ids": [
+        "image5"
+      ],
+      "text_ids": [
+        "text1",
+        "text10",
+        "text7"
+      ],
+      "image_ids": [
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.459
+    },
+    {
+      "test_id": "TEST_5926",
+      "question": "What are the key financial differences observed between the 'Powdered and Liquid",
+      "gold_ids": [
+        "image1",
+        "image3"
+      ],
+      "text_ids": [
+        "text7",
+        "text9"
+      ],
+      "image_ids": [
+        "image4",
+        "image6",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.489
+    },
+    {
+      "test_id": "TEST_9460",
+      "question": "How many items in total of Amazon related datasets in the paper? Please write th",
+      "gold_ids": [
+        "image1"
+      ],
+      "text_ids": [
+        "text10",
+        "text7",
+        "text2"
+      ],
+      "image_ids": [
+        "image1",
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.5,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.518
+    },
+    {
+      "test_id": "TEST_11544",
+      "question": "At which step, the loss spikes when without QK-norm?",
+      "gold_ids": [
+        "image7"
+      ],
+      "text_ids": [
+        "text7"
+      ],
+      "image_ids": [
+        "image3",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.436
+    },
+    {
+      "test_id": "TEST_10835",
+      "question": "What are the changes in net carrying values of intangible assets and medical cos",
+      "gold_ids": [
+        "text2",
+        "image3",
+        "image7",
+        "text12"
+      ],
+      "text_ids": [
+        "text1",
+        "text10",
+        "text11"
+      ],
+      "image_ids": [
+        "image5",
+        "image3",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.459
+    },
+    {
+      "test_id": "TEST_4742",
+      "question": "How does the 5-year cumulative total return for Costco Wholesale compare to the ",
+      "gold_ids": [
+        "image4"
+      ],
+      "text_ids": [
+        "text7",
+        "text7"
+      ],
+      "image_ids": [
+        "image8",
+        "image3",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.487
+    },
+    {
+      "test_id": "TEST_6228",
+      "question": "Compared to Trump in January 2019, what higher percentage of Republicans believe",
+      "gold_ids": [
+        "image2"
+      ],
+      "text_ids": [
+        "text7",
+        "text3"
+      ],
+      "image_ids": [
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.5
+      },
+      "latency_s": 1.506
+    },
+    {
+      "test_id": "TEST_4555",
+      "question": "What percentage of Americans prioritize promoting human rights over economic rel",
+      "gold_ids": [
+        "text8",
+        "image4"
+      ],
+      "text_ids": [
+        "text8"
+      ],
+      "image_ids": [
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.5,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "latency_s": 1.462
+    },
+    {
+      "test_id": "TEST_7429",
+      "question": "Which segment experienced the most significant growth in Adjusted EBIT from 2020",
+      "gold_ids": [
+        "text8",
+        "image3",
+        "text9"
+      ],
+      "text_ids": [
+        "text3"
+      ],
+      "image_ids": [
+        "image5",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.535
+    },
+    {
+      "test_id": "TEST_10416",
+      "question": "How do perceptions of the federal government's response to the COVID-19 outbreak",
+      "gold_ids": [
+        "text11",
+        "text2",
+        "text3",
+        "text6",
+        "image7",
+        "image5"
+      ],
+      "text_ids": [
+        "text4",
+        "text12",
+        "text10"
+      ],
+      "image_ids": [
+        "image3",
+        "image3",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.486
+    },
+    {
+      "test_id": "TEST_5978",
+      "question": "How do the correlation values of the BLEU metric with human assessments compare ",
+      "gold_ids": [
+        "image2",
+        "image4"
+      ],
+      "text_ids": [
+        "text6"
+      ],
+      "image_ids": [
+        "image8",
+        "image4",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.3065735963827292
+      },
+      "latency_s": 1.474
+    },
+    {
+      "test_id": "TEST_6066",
+      "question": "Compare the situations depicted in the images of medical and humanitarian effort",
+      "gold_ids": [
+        "image2",
+        "image1",
+        "image4"
+      ],
+      "text_ids": [
+        "text9",
+        "text2",
+        "text3"
+      ],
+      "image_ids": [
+        "image2",
+        "image2",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.463
+    },
+    {
+      "test_id": "TEST_5821",
+      "question": "How did HSBC's reported financial results and CO2 emissions change from 2019 to ",
+      "gold_ids": [
+        "image3",
+        "image5",
+        "image4"
+      ],
+      "text_ids": [
+        "text6",
+        "text1",
+        "text3"
+      ],
+      "image_ids": [
+        "image3",
+        "image3",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.487
+    },
+    {
+      "test_id": "TEST_10981",
+      "question": "What is the increase in net income and basic earnings per share from fiscal year",
+      "gold_ids": [
+        "image2",
+        "text1"
+      ],
+      "text_ids": [
+        "text10",
+        "text4",
+        "text3"
+      ],
+      "image_ids": [
+        "image3",
+        "image1",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.495
+    },
+    {
+      "test_id": "TEST_4375",
+      "question": "How do political affiliations influence opinions on religious scrutiny in the U.",
+      "gold_ids": [
+        "text4",
+        "text8",
+        "image2",
+        "text1",
+        "text6"
+      ],
+      "text_ids": [
+        "text1",
+        "text3",
+        "text12"
+      ],
+      "image_ids": [
+        "image5",
+        "image5",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "latency_s": 1.465
+    },
+    {
+      "test_id": "TEST_11499",
+      "question": "How does the performance of BERT+DL on SST-5 compare to that of BERT+DSC?",
+      "gold_ids": [
+        "image1",
+        "text4"
+      ],
+      "text_ids": [
+        "text4",
+        "text4",
+        "text7"
+      ],
+      "image_ids": [
+        "image2",
+        "image4",
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "latency_s": 1.482
+    },
+    {
+      "test_id": "TEST_11200",
+      "question": "How did the distribution of investment stages change from the 1998 fund to the 2",
+      "gold_ids": [
+        "image2"
+      ],
+      "text_ids": [
+        "text6",
+        "text3",
+        "text7"
+      ],
+      "image_ids": [
+        "image2",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.5,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.47
+    },
+    {
+      "test_id": "TEST_10618",
+      "question": "How do different variations of the BERT model perform across the English CoNLL 2",
+      "gold_ids": [
+        "text12",
+        "image3",
+        "image5"
+      ],
+      "text_ids": [
+        "text1",
+        "text7"
+      ],
+      "image_ids": [
+        "image5",
+        "image1",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "latency_s": 1.531
+    },
+    {
+      "test_id": "TEST_9981",
+      "question": "What are the key components of the 'Needs Exploration' phase in the process of p",
+      "gold_ids": [
+        "image4"
+      ],
+      "text_ids": [
+        "text9",
+        "text6"
+      ],
+      "image_ids": [
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.452
+    },
+    {
+      "test_id": "TEST_10404",
+      "question": "How do perceptions of job availability differ between political affiliations, an",
+      "gold_ids": [
+        "image6",
+        "image1",
+        "text1",
+        "text6",
+        "image5"
+      ],
+      "text_ids": [
+        "text7",
+        "text1",
+        "text2"
+      ],
+      "image_ids": [
+        "image3",
+        "image5",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 0.5,
+        "ndcg@3": 0.5307212739772434
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "latency_s": 1.446
+    },
+    {
+      "test_id": "TEST_8752",
+      "question": "Compared with 22Q1, in 23Q1, how much higher is the increase rate of number of d",
+      "gold_ids": [
+        "text10",
+        "image5",
+        "image4"
+      ],
+      "text_ids": [
+        "text8",
+        "text7",
+        "text7"
+      ],
+      "image_ids": [
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.483
+    },
+    {
+      "test_id": "TEST_11947",
+      "question": "How many times does the image of a bear appear in the PPT?",
+      "gold_ids": [
+        "image4",
+        "image8"
+      ],
+      "text_ids": [
+        "text1",
+        "text4",
+        "text5"
+      ],
+      "image_ids": [
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.417
+    },
+    {
+      "test_id": "TEST_7574",
+      "question": "How have McDonald's selling, general, and administrative expenses changed over t",
+      "gold_ids": [
+        "image6",
+        "text5",
+        "text2",
+        "text3",
+        "text12",
+        "image3",
+        "text10",
+        "image5"
+      ],
+      "text_ids": [
+        "text10",
+        "text2",
+        "text9"
+      ],
+      "image_ids": [
+        "image2",
+        "image1",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7653606369886217
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7653606369886217
+      },
+      "latency_s": 1.53
+    },
+    {
+      "test_id": "TEST_6217",
+      "question": "which model performs best in 0-shot setting on QUAC dataset according to Table 2",
+      "gold_ids": [
+        "image1"
+      ],
+      "text_ids": [
+        "text10",
+        "text3"
+      ],
+      "image_ids": [
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.459
+    },
+    {
+      "test_id": "TEST_4423",
+      "question": "How did the net revenues from the 'Mobile and ancillary' platform change from 20",
+      "gold_ids": [
+        "image1"
+      ],
+      "text_ids": [
+        "text1",
+        "text2"
+      ],
+      "image_ids": [
+        "image4",
+        "image5",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.495
+    },
+    {
+      "test_id": "TEST_10486",
+      "question": "What are the differences in technology usage within the household compared to ou",
+      "gold_ids": [
+        "image5",
+        "image7"
+      ],
+      "text_ids": [
+        "text7",
+        "text7"
+      ],
+      "image_ids": [
+        "image6",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.483
+    },
+    {
+      "test_id": "TEST_11275",
+      "question": "How do evaluations of the U.S. COVID-19 response vary across different education",
+      "gold_ids": [
+        "text7",
+        "image4"
+      ],
+      "text_ids": [
+        "text12",
+        "text7"
+      ],
+      "image_ids": [
+        "image5",
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "latency_s": 1.43
+    },
+    {
+      "test_id": "TEST_9126",
+      "question": "How did Costco's cumulative total returns compare to the S&P 500 and S&P 500 Ret",
+      "gold_ids": [
+        "image1",
+        "text6"
+      ],
+      "text_ids": [
+        "text7",
+        "text7"
+      ],
+      "image_ids": [
+        "image8",
+        "image6",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.452
+    },
+    {
+      "test_id": "TEST_11217",
+      "question": "How do Democrats and Republicans differ in their support for requiring photo ID ",
+      "gold_ids": [
+        "text11",
+        "image3"
+      ],
+      "text_ids": [
+        "text6",
+        "text5",
+        "text7"
+      ],
+      "image_ids": [
+        "image8",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.437
+    },
+    {
+      "test_id": "TEST_5314",
+      "question": "What is the main business activity of the company and its contribution to the to",
+      "gold_ids": [
+        "image3",
+        "text6"
+      ],
+      "text_ids": [
+        "text1"
+      ],
+      "image_ids": [
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "latency_s": 1.451
+    },
+    {
+      "test_id": "TEST_5169",
+      "question": "How did the weighted-average discount rate assumptions for pension and postretir",
+      "gold_ids": [
+        "image2",
+        "text6"
+      ],
+      "text_ids": [
+        "text5",
+        "text7",
+        "text5"
+      ],
+      "image_ids": [
+        "image3",
+        "image5",
+        "image8"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.464
+    },
+    {
+      "test_id": "TEST_6573",
+      "question": "Who is the current Executive Vice President and Chief Financial Officer at Nike,",
+      "gold_ids": [
+        "image6",
+        "text3"
+      ],
+      "text_ids": [
+        "text4",
+        "text9"
+      ],
+      "image_ids": [
+        "image1",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.457
+    },
+    {
+      "test_id": "TEST_4387",
+      "question": "Which exchanges are the 1.500% Notes due 2026 registered on?",
+      "gold_ids": [
+        "image3"
+      ],
+      "text_ids": [
+        "text8",
+        "text11"
+      ],
+      "image_ids": [
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 1.0,
+        "mrr": 1.0,
+        "ndcg@3": 1.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.5
+      },
+      "latency_s": 1.393
+    },
+    {
+      "test_id": "TEST_9293",
+      "question": "In the survey conducted May 1-15, 2017, what percentage of U.S. adults says the ",
+      "gold_ids": [
+        "text3",
+        "image4"
+      ],
+      "text_ids": [
+        "text9",
+        "text9"
+      ],
+      "image_ids": [
+        "image2",
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.46
+    },
+    {
+      "test_id": "TEST_11763",
+      "question": "Which model variant has the highest improvement in F1 score for the QuoRef datas",
+      "gold_ids": [
+        "text5",
+        "image4"
+      ],
+      "text_ids": [
+        "text5",
+        "text10",
+        "text5"
+      ],
+      "image_ids": [
+        "image6",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.9197207891481876
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "latency_s": 1.512
+    },
+    {
+      "test_id": "TEST_5156",
+      "question": "Which operating segment contributed the highest percentage to net sales in 2022,",
+      "gold_ids": [
+        "text7",
+        "text10",
+        "text1",
+        "image5"
+      ],
+      "text_ids": [
+        "text4",
+        "text2",
+        "text6"
+      ],
+      "image_ids": [
+        "image2",
+        "image1",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.458
+    },
+    {
+      "test_id": "TEST_10739",
+      "question": "How does Toyota's financial strategy correlate with its response to climate scen",
+      "gold_ids": [
+        "text10",
+        "image1",
+        "text1",
+        "image5"
+      ],
+      "text_ids": [
+        "text9",
+        "text7",
+        "text8"
+      ],
+      "image_ids": [
+        "image1",
+        "image8",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.25,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.497
+    },
+    {
+      "test_id": "TEST_8180",
+      "question": "What are the different contexts in which funerals are depicted in the given mult",
+      "gold_ids": [
+        "image1",
+        "image5"
+      ],
+      "text_ids": [
+        "text3",
+        "text9",
+        "text4"
+      ],
+      "image_ids": [
+        "image8"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.466
+    },
+    {
+      "test_id": "TEST_6483",
+      "question": "How did the basic and diluted earnings per common share change from 2017 to 2019",
+      "gold_ids": [
+        "text2",
+        "image8"
+      ],
+      "text_ids": [
+        "text10",
+        "text2",
+        "text6"
+      ],
+      "image_ids": [
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.38685280723454163
+      },
+      "latency_s": 1.458
+    },
+    {
+      "test_id": "TEST_10533",
+      "question": "What are the key differences in the layout and information presented on the Ariz",
+      "gold_ids": [
+        "image6",
+        "text10",
+        "image7"
+      ],
+      "text_ids": [
+        "text2",
+        "text11"
+      ],
+      "image_ids": [
+        "image2",
+        "image6"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.449
+    },
+    {
+      "test_id": "TEST_7518",
+      "question": "What are the main categories of cash obligations and their distribution over the",
+      "gold_ids": [
+        "text11",
+        "image4"
+      ],
+      "text_ids": [
+        "text9"
+      ],
+      "image_ids": [
+        "image5",
+        "image7"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.432
+    },
+    {
+      "test_id": "TEST_4340",
+      "question": "Which model has the highest Distractor F1 score according to Table 1?",
+      "gold_ids": [
+        "text5",
+        "image4"
+      ],
+      "text_ids": [
+        "text5",
+        "text4",
+        "text9"
+      ],
+      "image_ids": [
+        "image4",
+        "image5",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 1.0,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.9197207891481876
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.6131471927654584
+      },
+      "latency_s": 1.436
+    },
+    {
+      "test_id": "TEST_12206",
+      "question": "Which data type has the highest number of items with errors according to the str",
+      "gold_ids": [
+        "image6"
+      ],
+      "text_ids": [
+        "text6",
+        "text7",
+        "text9"
+      ],
+      "image_ids": [
+        "image4",
+        "image4",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.433
+    },
+    {
+      "test_id": "TEST_9198",
+      "question": "In the year when 58% of people thought it was too early to tell if Trump was a s",
+      "gold_ids": [
+        "text6",
+        "image4"
+      ],
+      "text_ids": [
+        "text7",
+        "text1",
+        "text3"
+      ],
+      "image_ids": [
+        "image2",
+        "image8",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.5,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.3065735963827292
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.482
+    },
+    {
+      "test_id": "TEST_8831",
+      "question": "How did the earnings in the U.S. downstream and international downstream sectors",
+      "gold_ids": [
+        "text5",
+        "text9",
+        "text4",
+        "image1",
+        "image3"
+      ],
+      "text_ids": [
+        "text7",
+        "text8",
+        "text6"
+      ],
+      "image_ids": [
+        "image4",
+        "image1",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 0.5,
+        "ndcg@3": 0.5307212739772434
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.511
+    },
+    {
+      "test_id": "TEST_4305",
+      "question": "Which country had the largest number of customer accounts in Asia in 2020?",
+      "gold_ids": [
+        "image5"
+      ],
+      "text_ids": [
+        "text5",
+        "text7",
+        "text5"
+      ],
+      "image_ids": [
+        "image4",
+        "image2",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.44
+    },
+    {
+      "test_id": "TEST_9578",
+      "question": "What augmentation techniques are applied in the benchmark settings for MedMNIST ",
+      "gold_ids": [
+        "image2",
+        "text1"
+      ],
+      "text_ids": [
+        "text9",
+        "text9",
+        "text7"
+      ],
+      "image_ids": [
+        "image4",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.455
+    },
+    {
+      "test_id": "TEST_7020",
+      "question": "How did the fair value of the company's long-term debt change from 2019 to 2020?",
+      "gold_ids": [
+        "text9",
+        "image8"
+      ],
+      "text_ids": [
+        "text1",
+        "text3",
+        "text5"
+      ],
+      "image_ids": [
+        "image1",
+        "image2",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.491
+    },
+    {
+      "test_id": "TEST_9561",
+      "question": "In Figure 101, which country is the person on the cover of the news on the polit",
+      "gold_ids": [
+        "text8",
+        "image3",
+        "text3"
+      ],
+      "text_ids": [
+        "text7",
+        "text1",
+        "text5"
+      ],
+      "image_ids": [
+        "image2",
+        "image4",
+        "image3"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.3333333333333333,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "ndcg@3": 0.23463936301137822
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.483
+    },
+    {
+      "test_id": "TEST_6544",
+      "question": "How did Costco's net income attributable to noncontrolling interests change over",
+      "gold_ids": [
+        "text4",
+        "image2",
+        "text1",
+        "text7",
+        "text10"
+      ],
+      "text_ids": [
+        "text4",
+        "text5",
+        "text10"
+      ],
+      "image_ids": [
+        "image1",
+        "image3",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7039180890341347
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 1.0,
+        "ndcg@3": 0.7039180890341347
+      },
+      "latency_s": 1.518
+    },
+    {
+      "test_id": "TEST_5931",
+      "question": "What are the distinct advantages of using the proposed NER model (Ours) compared",
+      "gold_ids": [
+        "image4",
+        "image1",
+        "text3",
+        "text10",
+        "image5"
+      ],
+      "text_ids": [
+        "text7",
+        "text8",
+        "text5"
+      ],
+      "image_ids": [
+        "image7",
+        "image4",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.4,
+        "precision@3": 0.6666666666666666,
+        "mrr": 0.5,
+        "ndcg@3": 0.5307212739772434
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.495
+    },
+    {
+      "test_id": "TEST_8349",
+      "question": "How does the level of confidence in Biden to deal effectively with China compare",
+      "gold_ids": [
+        "text5",
+        "image2",
+        "text3",
+        "image3",
+        "text10"
+      ],
+      "text_ids": [
+        "text10",
+        "text12",
+        "text4"
+      ],
+      "image_ids": [
+        "image5",
+        "image4",
+        "image5"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.2,
+        "precision@3": 0.3333333333333333,
+        "mrr": 1.0,
+        "ndcg@3": 0.46927872602275644
+      },
+      "latency_s": 1.489
+    },
+    {
+      "test_id": "TEST_8086",
+      "question": "How do the images and articles from the New York Times depict the aftermath of t",
+      "gold_ids": [
+        "image3",
+        "image4"
+      ],
+      "text_ids": [
+        "text2"
+      ],
+      "image_ids": [
+        "image8"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.469
+    },
+    {
+      "test_id": "TEST_10281",
+      "question": "How have public opinions regarding Trump's ability to handle economic policy and",
+      "gold_ids": [
+        "text9",
+        "image8",
+        "image1",
+        "text3",
+        "text12",
+        "image3",
+        "text10"
+      ],
+      "text_ids": [
+        "text5",
+        "text10"
+      ],
+      "image_ids": [
+        "image6",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.14285714285714285,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "image_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.14285714285714285,
+        "precision@3": 0.5,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "combo_metrics": {
+        "hit_rate": 1.0,
+        "recall@3": 0.14285714285714285,
+        "precision@3": 0.3333333333333333,
+        "mrr": 0.5,
+        "ndcg@3": 0.2960819109658652
+      },
+      "latency_s": 1.466
+    },
+    {
+      "test_id": "TEST_11150",
+      "question": "What is the percentage increase in total basic earnings per share (USD) from 202",
+      "gold_ids": [
+        "text11",
+        "text2",
+        "image7"
+      ],
+      "text_ids": [
+        "text4",
+        "text10",
+        "text5"
+      ],
+      "image_ids": [
+        "image3",
+        "image3",
+        "image4"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.52
+    },
+    {
+      "test_id": "TEST_6917",
+      "question": "How has the net interest spread changed over the years 2018 to 2020?",
+      "gold_ids": [
+        "image6"
+      ],
+      "text_ids": [
+        "text8"
+      ],
+      "image_ids": [
+        "image1",
+        "image3",
+        "image1"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.439
+    },
+    {
+      "test_id": "TEST_9772",
+      "question": "How many claims are with the highest percentage of reasoning steps  in the autho",
+      "gold_ids": [
+        "text2",
+        "image1"
+      ],
+      "text_ids": [
+        "text1"
+      ],
+      "image_ids": [
+        "image4",
+        "image8",
+        "image2"
+      ],
+      "text_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "image_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "combo_metrics": {
+        "hit_rate": 0.0,
+        "recall@3": 0.0,
+        "precision@3": 0.0,
+        "mrr": 0.0,
+        "ndcg@3": 0.0
+      },
+      "latency_s": 1.449
+    }
+  ]
+}

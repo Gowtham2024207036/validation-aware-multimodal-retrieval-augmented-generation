@@ -2,147 +2,214 @@
 lmstudio_client.py
 ------------------
 Client for LM Studio's local OpenAI-compatible API.
-Supports:
-  - Text-only chat
-  - Multimodal chat (text + images) using Qwen2.5-VL vision capabilities
-  - Streaming and non-streaming responses
-  - Connection health check
+Endpoint confirmed working: POST /v1/chat/completions
 
-LM Studio endpoints used:
-  GET  /api/v1/models          → verify model is loaded
-  POST /api/v1/chat/completions → generate response
+Public API:
+    check_connection()                              -> bool
+    generate(messages)                              -> str
+    generate_text_only(system, user_text)           -> str
+    generate_with_images(system, user_text,
+                         image_paths, images_root)  -> str
 """
 
 import os
 import sys
+import io
 import base64
 import logging
 import requests
 from pathlib import Path
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 logger = logging.getLogger(__name__)
 
-# LM Studio default settings — change if you've configured a different port
-LMSTUDIO_BASE_URL = "http://localhost:1234"
-MODEL_ID          = "qwen2.5-vl-7b-instruct"
-DEFAULT_TIMEOUT   = 120   # seconds — VL models can be slow on first call
+LM_STUDIO_BASE_URL = os.getenv("LM_STUDIO_BASE_URL", "http://localhost:1234")
+LM_STUDIO_MODEL    = os.getenv("LM_STUDIO_MODEL",    "qwen2.5-vl-7b-instruct")
+LM_STUDIO_TIMEOUT  = int(os.getenv("LM_STUDIO_TIMEOUT", "120"))
 
-# Paths — adjust relative to your project root
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-IMAGES_ROOT = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "data", "raw"
-)
+# Confirmed working endpoint
+CHAT_URL   = f"{LM_STUDIO_BASE_URL}/v1/chat/completions"
+MODELS_URL = f"{LM_STUDIO_BASE_URL}/api/v1/models"
 
 
-def health_check() -> bool:
-    """Check LM Studio is running and the model is loaded."""
+# ------------------------------------------------------------------ #
+# Connection check
+# ------------------------------------------------------------------ #
+
+def check_connection() -> bool:
+    """Return True if LM Studio is reachable."""
     try:
-        resp = requests.get(f"{LMSTUDIO_BASE_URL}/api/v1/models", timeout=5)
-        if resp.status_code != 200:
-            return False
-        models = resp.json().get("data", [])
-        loaded = [m.get("id", "") for m in models]
-        if not any(MODEL_ID.lower() in m.lower() for m in loaded):
-            logger.warning(
-                "LM Studio running but model '%s' not loaded. "
-                "Loaded models: %s", MODEL_ID, loaded
-            )
-            return False
-        return True
-    except requests.exceptions.ConnectionError:
+        r = requests.get(MODELS_URL, timeout=5)
+        return r.status_code == 200
+    except Exception:
         return False
 
+# Alias
+health_check = check_connection
 
-def image_path_to_base64(image_path: str) -> str | None:
+
+# ------------------------------------------------------------------ #
+# Image helper
+# ------------------------------------------------------------------ #
+
+def image_to_base64(image_path: str, images_root: str = "",
+                    max_size: int = 512) -> str | None:
     """
-    Convert a relative image path (from Qdrant payload) to base64.
-    e.g. "images/COSTCO_2021_10K_image17.jpg" → base64 string
+    Load image, resize to max_size on longest edge, return base64 JPEG data URI.
+    Returns None if file not found or cannot be read.
+    max_size=512 keeps payload small — Qwen2.5-VL-7B has limited context.
     """
-    full_path = os.path.join(IMAGES_ROOT, image_path)
-    if not os.path.exists(full_path):
-        logger.warning("Image not found: %s", full_path)
+    full = os.path.join(images_root, image_path) if images_root else image_path
+    if not os.path.exists(full):
+        logger.warning("Image not found: %s", full)
         return None
     try:
-        with open(full_path, "rb") as f:
-            return base64.b64encode(f.read()).decode("utf-8")
+        from PIL import Image as PILImage
+        img = PILImage.open(full).convert("RGB")
+        w, h = img.size
+        if max(w, h) > max_size:
+            scale = max_size / max(w, h)
+            img   = img.resize((int(w * scale), int(h * scale)), PILImage.LANCZOS)
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=80)
+        b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
+        return f"data:image/jpeg;base64,{b64}"
     except Exception as e:
-        logger.warning("Could not read image %s: %s", full_path, e)
+        logger.warning("Cannot encode image %s: %s", full, e)
         return None
 
-
-def get_image_mime(image_path: str) -> str:
-    """Infer MIME type from file extension."""
-    ext = Path(image_path).suffix.lower()
-    return {"jpg": "image/jpeg", ".jpg": "image/jpeg",
-            ".jpeg": "image/jpeg", ".png": "image/png",
-            ".gif": "image/gif", ".webp": "image/webp"}.get(ext, "image/jpeg")
+# Alias
+image_path_to_base64 = image_to_base64
 
 
-def build_multimodal_message(
-    text_prompt: str,
-    image_paths: list[str],
-    max_images: int = 3,
-) -> dict:
-    """
-    Build an OpenAI-format user message with text + images.
-    Qwen2.5-VL accepts: {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,..."}}
-    """
-    content = []
+# ------------------------------------------------------------------ #
+# Core generate — text only messages
+# ------------------------------------------------------------------ #
 
-    # Add images first (VL models process images before the text question)
-    for img_path in image_paths[:max_images]:
-        b64 = image_path_to_base64(img_path)
-        if b64 is None:
-            continue
-        mime = get_image_mime(img_path)
-        content.append({
-            "type": "image_url",
-            "image_url": {
-                "url": f"data:{mime};base64,{b64}"
-            }
-        })
-
-    # Add text prompt after images
-    content.append({"type": "text", "text": text_prompt})
-
-    return {"role": "user", "content": content}
-
-
-def chat(
-    messages: list[dict],
+def generate(
+    messages:    list[dict],
+    max_tokens:  int   = 1024,
     temperature: float = 0.1,
-    max_tokens: int = 512,
-    stream: bool = False,
 ) -> str:
     """
-    Send a chat request to LM Studio.
-    Returns the assistant's response text.
-    Low temperature (0.1) for factual financial QA — reduces hallucination.
+    Send messages to LM Studio /v1/chat/completions.
+    All message content must be strings (not arrays) for text-only calls.
+    Returns the assistant reply string. Never returns None.
     """
     payload = {
-        "model":       MODEL_ID,
+        "model":       LM_STUDIO_MODEL,
         "messages":    messages,
-        "temperature": temperature,
         "max_tokens":  max_tokens,
-        "stream":      stream,
+        "temperature": temperature,
+        "stream":      False,
     }
-
     try:
-        resp = requests.post(
-            f"{LMSTUDIO_BASE_URL}/api/v1/chat/completions",
-            json=payload,
-            timeout=DEFAULT_TIMEOUT,
+        r = requests.post(
+            CHAT_URL, json=payload,
+            headers={"Content-Type": "application/json"},
+            timeout=LM_STUDIO_TIMEOUT,
         )
-        resp.raise_for_status()
-        data = resp.json()
-        return data["choices"][0]["message"]["content"].strip()
-
+        r.raise_for_status()
+        reply = r.json()["choices"][0]["message"]["content"]
+        return reply.strip() if reply else "No response from model."
     except requests.exceptions.ConnectionError:
         return "ERROR: Cannot connect to LM Studio. Is it running on localhost:1234?"
     except requests.exceptions.Timeout:
-        return "ERROR: LM Studio timed out. The model may be slow — try reducing max_tokens."
+        return f"ERROR: LM Studio timed out after {LM_STUDIO_TIMEOUT}s."
     except requests.exceptions.HTTPError as e:
-        return f"ERROR: LM Studio HTTP error: {e}"
-    except (KeyError, IndexError) as e:
-        return f"ERROR: Unexpected response format from LM Studio: {e}"
+        # Log response body for debugging
+        try:
+            body = r.json()
+            logger.error("LM Studio 400 body: %s", body)
+        except Exception:
+            pass
+        return f"ERROR: HTTP {e}"
+    except (KeyError, IndexError, TypeError) as e:
+        return f"ERROR: Unexpected response format: {e}"
+    except Exception as e:
+        return f"ERROR: {e}"
+
+
+# Alias for older code
+def chat(messages, temperature=0.1, max_tokens=512) -> str:
+    return generate(messages, max_tokens=max_tokens, temperature=temperature)
+
+
+# ------------------------------------------------------------------ #
+# Text-only generation
+# ------------------------------------------------------------------ #
+
+def generate_text_only(
+    system_prompt: str,
+    user_text:     str,
+    max_tokens:    int   = 1024,
+    temperature:   float = 0.1,
+) -> str:
+    """Pure text generation — no images. Fast and reliable."""
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user",   "content": user_text},
+    ]
+    return generate(messages, max_tokens, temperature)
+
+
+# ------------------------------------------------------------------ #
+# Multimodal generation
+# ------------------------------------------------------------------ #
+
+def generate_with_images(
+    system_prompt: str,
+    user_text:     str,
+    image_paths:   list[str],
+    images_root:   str   = "",
+    max_tokens:    int   = 1024,
+    temperature:   float = 0.1,
+    max_images:    int   = 1,
+) -> str:
+    """
+    Multimodal generation with Qwen2.5-VL via LM Studio.
+
+    Key facts about LM Studio + Qwen2.5-VL:
+    - /v1/chat/completions is the correct endpoint
+    - Content must be an array when images are included
+    - System message must also use array format (not string) when user uses array
+    - Limit to 1 image per request to avoid context overflow on 7B model
+    - System prompt merged into user message to avoid mixed-format rejection
+    """
+    # Load images — only first max_images to avoid token overflow
+    image_uris = []
+    for p in (image_paths or [])[:max_images]:
+        uri = image_to_base64(p, images_root)
+        if uri:
+            image_uris.append(uri)
+            logger.debug("Loaded image: %s", p)
+
+    # No images available — fall back to text only silently
+    if not image_uris:
+        logger.info("No images loaded — using text-only generation.")
+        return generate_text_only(system_prompt, user_text, max_tokens, temperature)
+
+    # Build multimodal content array
+    # Merge system prompt into user text to avoid mixed string/array content types
+    full_text = f"{system_prompt}\n\n{user_text}"
+    content   = []
+    for uri in image_uris:
+        content.append({
+            "type":      "image_url",
+            "image_url": {"url": uri},
+        })
+    content.append({"type": "text", "text": full_text})
+
+    messages = [
+        {"role": "user", "content": content}
+    ]
+
+    result = generate(messages, max_tokens, temperature)
+
+    # If multimodal failed, retry as text only
+    if result.startswith("ERROR:"):
+        logger.warning("Multimodal failed (%s), retrying as text-only.", result)
+        return generate_text_only(system_prompt, user_text, max_tokens, temperature)
+
+    return result

@@ -1,120 +1,133 @@
 """
 prompt_builder.py
 -----------------
-Builds structured prompts for Qwen2.5-VL from retrieved RAG context.
+Builds prompts for Qwen2.5-VL from retrieved RAG context.
+Works for ANY document type — financial, academic, research, school data, etc.
 
-Three prompt modes:
-  1. text_only   — only text chunks passed as context
-  2. image_only  — only image descriptions + base64 images passed
-  3. multimodal  — text chunks + images combined (best for financial QA)
-
-System prompt is tuned for financial document QA:
-  - Instructs model to answer only from provided context
-  - Asks for specific numbers/figures when available
-  - Instructs it to say "not found" rather than hallucinate
+Functions:
+    build_text_only_prompt(query, text_hits, image_hits)  -> (user_text, [])
+    build_multimodal_prompt(query, text_hits, image_hits) -> (user_text, image_paths)
+    SYSTEM_PROMPT  — shared system instruction string
 """
 
-from lmstudio_client import build_multimodal_message
+SYSTEM_PROMPT = (
+    "You are a knowledgeable assistant. Answer questions using ONLY the "
+    "retrieved document context provided below.\n\n"
+    "CRITICAL RULES:\n"
+    "1. ABBREVIATIONS IN INDIAN CONTEXT: SC = Scheduled Caste, ST = Scheduled Tribe, "
+    "BC = Backward Class, MBC = Most Backward Class, OBC = Other Backward Class, "
+    "TNEA = Tamil Nadu Engineering Admissions. Never interpret SC as a country code.\n"
+    "2. Read every text passage and image carefully before answering.\n"
+    "3. Extract exact numbers, policy details, or eligibility criteria from context.\n"
+    "4. State which document the answer came from.\n"
+    "5. Only say not found if the information is genuinely absent from all context.\n"
+    "6. Give direct, specific answers — state the fact first."
+)
 
-SYSTEM_PROMPT = """You are a financial analyst assistant. You answer questions about company financials strictly based on the provided context — retrieved text passages and financial charts/tables from annual reports (10-K filings).
 
-Rules:
-1. Answer ONLY using the provided context. Do not use external knowledge.
-2. If the exact answer is in the context, quote the specific number or figure.
-3. If the answer cannot be found in the context, say: "The information was not found in the retrieved documents."
-4. When referencing figures, mention which document they came from (e.g. "According to COSTCO_2021_10K...").
-5. Be concise — answer in 2-4 sentences unless a longer explanation is needed.
-6. If financial images/tables are provided, analyse them carefully for relevant numbers."""
+# ------------------------------------------------------------------ #
+# Context formatters
+# ------------------------------------------------------------------ #
 
-
-def format_text_context(text_hits: list[dict]) -> str:
-    """Format retrieved text chunks into a readable context block."""
+def _fmt_text(text_hits: list[dict]) -> str:
     if not text_hits:
-        return "No text passages retrieved."
+        return ""
     lines = ["=== RETRIEVED TEXT PASSAGES ==="]
-    for i, hit in enumerate(text_hits, 1):
-        doc  = hit.get("doc_name", "unknown")
-        text = (hit.get("text") or "").strip()
-        lines.append(f"\n[Passage {i} — {doc}]\n{text}")
+    for i, h in enumerate(text_hits, 1):
+        doc  = h.get("doc_name", "unknown")
+        text = (h.get("text") or "").strip()[:600]
+        page = h.get("page_id")
+        page_str = f" | Page {page}" if page else ""
+        lines.append(f"\n[Passage {i} | {doc}{page_str}]\n{text}")
     return "\n".join(lines)
 
 
-def format_image_context(image_hits: list[dict]) -> str:
-    """Format image descriptions (captions) as text context."""
+def _fmt_image_desc(image_hits: list[dict]) -> str:
     if not image_hits:
-        return "No financial images retrieved."
-    lines = ["=== RETRIEVED FINANCIAL IMAGES (descriptions) ==="]
-    for i, hit in enumerate(image_hits, 1):
-        doc  = hit.get("doc_name", "unknown")
-        path = hit.get("image_path", "")
-        desc = (hit.get("text") or "").strip()
-        lines.append(f"\n[Image {i} — {doc} | {path}]\nDescription: {desc}")
+        return ""
+    lines = ["=== RETRIEVED IMAGES (charts / tables / figures) ==="]
+    for i, h in enumerate(image_hits, 1):
+        doc  = h.get("doc_name", "unknown")
+        path = h.get("image_path", "")
+        desc = (h.get("text") or "").strip()[:400]
+        page = h.get("page_id")
+        page_str = f" | Page {page}" if page else ""
+        cde  = h.get("cde_confidence")
+        cde_str = f" [CDE: {cde:.3f}]" if cde else ""
+        lines.append(f"\n[Image {i} | {doc}{page_str}{cde_str}]\n{desc}")
     return "\n".join(lines)
 
 
-def build_text_only_prompt(query: str, text_hits: list[dict]) -> list[dict]:
-    """Prompt using only retrieved text chunks."""
-    context = format_text_context(text_hits)
-    user_msg = f"{context}\n\n=== QUESTION ===\n{query}"
-    return [
-        {"role": "system",  "content": SYSTEM_PROMPT},
-        {"role": "user",    "content": user_msg},
-    ]
+# ------------------------------------------------------------------ #
+# Prompt builders
+# ------------------------------------------------------------------ #
 
-
-def build_image_only_prompt(
-    query: str,
-    image_hits: list[dict],
-) -> list[dict]:
-    """
-    Prompt using only retrieved images (passed as base64 to Qwen2.5-VL).
-    The model directly reads the financial tables/charts from the images.
-    """
-    if not image_hits:
-        return build_text_only_prompt(query, [])
-
-    image_paths = [h["image_path"] for h in image_hits if h.get("image_path")]
-    text_prompt = (
-        f"The following financial chart(s) or table(s) have been retrieved "
-        f"from annual reports to help answer this question.\n\n"
-        f"Question: {query}\n\n"
-        f"Please analyse the image(s) carefully and answer based on what you see."
-    )
-    user_msg = build_multimodal_message(text_prompt, image_paths)
-    return [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        user_msg,
-    ]
+def build_text_only_prompt(
+    query:      str,
+    text_hits:  list[dict],
+    image_hits: list[dict] = None,
+) -> tuple[str, list]:
+    """Text-only — image captions included as text but no actual images sent."""
+    parts = []
+    txt = _fmt_text(text_hits)
+    if txt:
+        parts.append(txt)
+    img = _fmt_image_desc(image_hits or [])
+    if img:
+        parts.append(img)
+    parts.append(f"\n=== QUESTION ===\n{query}")
+    return "\n\n".join(parts), []
 
 
 def build_multimodal_prompt(
-    query: str,
-    text_hits: list[dict],
+    query:      str,
+    text_hits:  list[dict],
+    image_hits: list[dict] = None,
+    max_images: int = 3,
+) -> tuple[str, list]:
+    """
+    Multimodal — returns (user_text, image_paths).
+    Qwen2.5-VL reads the actual image files alongside text context.
+    """
+    image_hits = image_hits or []
+    parts = []
+
+    txt = _fmt_text(text_hits)
+    if txt:
+        parts.append(txt)
+
+    img_desc = _fmt_image_desc(image_hits)
+    if img_desc:
+        parts.append(img_desc)
+        parts.append(
+            "The images above are attached. Examine them carefully — "
+            "they may contain charts, tables, or figures with the exact "
+            "values needed to answer the question."
+        )
+
+    parts.append(f"\n=== QUESTION ===\n{query}")
+    user_text   = "\n\n".join(parts)
+    image_paths = [h["image_path"] for h in image_hits[:max_images]
+                   if h.get("image_path")]
+    return user_text, image_paths
+
+
+def format_answer(
+    query:      str,
+    answer:     str,
+    text_hits:  list[dict],
     image_hits: list[dict],
-    max_images: int = 2,
-) -> list[dict]:
-    """
-    Full multimodal prompt: text chunks as string context + images as base64.
-    This is the most powerful mode — Qwen2.5-VL reads both simultaneously.
-
-    Note: We cap at max_images=2 by default to keep the prompt within
-    Qwen2.5-VL-7B's context window. Increase if you have enough VRAM.
-    """
-    text_context = format_text_context(text_hits)
-    img_desc     = format_image_context(image_hits)
-
-    text_prompt = (
-        f"{text_context}\n\n"
-        f"{img_desc}\n\n"
-        f"The images above are financial charts/tables from the same documents. "
-        f"Use both the text passages AND the visual content of the images to answer.\n\n"
-        f"=== QUESTION ===\n{query}"
-    )
-
-    image_paths = [h["image_path"] for h in image_hits if h.get("image_path")]
-    user_msg    = build_multimodal_message(text_prompt, image_paths, max_images=max_images)
-
-    return [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        user_msg,
-    ]
+    arch_name:  str,
+    mode:       str,
+) -> dict:
+    """Package result into a structured dict for saving."""
+    return {
+        "query":         query,
+        "answer":        answer,
+        "arch_name":     arch_name,
+        "mode":          mode,
+        "sources_text":  [{"doc": h.get("doc_name"), "quote_id": h.get("quote_id"),
+                           "page": h.get("page_id")} for h in text_hits],
+        "sources_image": [{"doc": h.get("doc_name"), "path": h.get("image_path"),
+                           "page": h.get("page_id")} for h in image_hits],
+    }

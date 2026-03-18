@@ -66,6 +66,24 @@ def _bm25_candidates(bm25, records, query_tokens, n):
              **records[i]["payload"]} for i in top_idx]
 
 
+
+KNOWN_COMPANIES = {
+    "costco": "COSTCO", "amazon": "AMAZON", "apple": "APPLE",
+    "netflix": "NETFLIX", "tesla": "TESLA", "microsoft": "MICROSOFT",
+    "google": "GOOGLE", "alphabet": "GOOGLE", "walmart": "WALMART",
+    "bestbuy": "BESTBUY", "best buy": "BESTBUY", "target": "TARGET",
+    "nike": "NIKE", "adobe": "ADOBE", "salesforce": "SALESFORCE",
+    "inditex": "INDITEX", "nestle": "NSRGY",
+}
+
+def _extract_company(query: str) -> str:
+    """Return uppercase company key if found in query, else empty string."""
+    q = query.lower()
+    for kw, code in KNOWN_COMPANIES.items():
+        if kw in q:
+            return code
+    return ""
+
 def retrieve(query: str, models: SharedModels) -> dict:
     expanded = expand_query(query)
 
@@ -99,7 +117,9 @@ def retrieve(query: str, models: SharedModels) -> dict:
 
     fused_img = rrf_fuse([bm25_img, vec_img])
 
-    return {
-        "text":  deduplicate(fused_text, TOP_N),
-        "image": deduplicate(fused_img,  TOP_N),
-    }
+    final_text  = deduplicate(fused_text, TOP_N)
+    final_image = deduplicate(fused_img,  TOP_N)
+    if final_text:
+        top_docs = set(h.get("doc_name","") for h in final_text if h.get("doc_name"))
+        final_image = [h for h in final_image if h.get("doc_name","") in top_docs]
+    return {"text": final_text, "image": final_image}

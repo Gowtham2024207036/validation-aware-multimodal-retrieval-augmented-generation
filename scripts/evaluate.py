@@ -97,12 +97,17 @@ def ndcg_at_k(retrieved_ids: list[str], gold_ids: set[str], k: int = 3) -> float
 
 
 def extract_quote_ids(hits: list[dict]) -> list[str]:
-    """Extract quote_id from result payloads."""
+    """Extract and normalize quote_id from result payloads."""
+    import re as _re
+    def _norm(raw):
+        s = str(raw)
+        m = _re.search(r"((?:text|image)\d+)$", s, _re.IGNORECASE)
+        return m.group(1).lower() if m else s.lower()
     ids = []
     for h in hits:
         qid = h.get("quote_id")
         if qid:
-            ids.append(str(qid))
+            ids.append(_norm(qid))
     return ids
 
 
@@ -161,7 +166,17 @@ def evaluate(arch_ids: list[int], sample_size: int):
 
         for qi, q in enumerate(questions):
             question    = q.get("question", "")
-            gold_ids    = set(str(g) for g in q.get("gold_quote_ids", []))
+            # Fix: gold_quote_ids are stored as "DOCNAME_quoteID" (e.g. "COSTCO_2021_10K_text5")
+            # but Qdrant payloads store just "text5" or "image7".
+            # Normalize both sides: strip everything up to and including the last underscore-separated
+            # prefix that ends with a known quote pattern (text/image + number).
+            import re as _re
+            def _norm_id(raw_id):
+                s = str(raw_id)
+                # Extract trailing text/image + digits pattern
+                m = _re.search(r"((?:text|image)\d+)$", s, _re.IGNORECASE)
+                return m.group(1).lower() if m else s.lower()
+            gold_ids = set(_norm_id(g) for g in q.get("gold_quote_ids", []))
 
             if not question or not gold_ids:
                 continue

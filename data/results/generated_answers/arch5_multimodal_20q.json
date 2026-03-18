@@ -1,0 +1,837 @@
+[
+  {
+    "query": "How do the category-wise transaction volumes in online retail relate to the gross margin contributions, and what implications might these have for the e-commerce supply and demand model?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "OTC_NSRGY_2020",
+        "quote_id": "OTC_NSRGY_2020_text6"
+      },
+      {
+        "doc": "earthlinkweb-150213112111-conversion-gate02_95",
+        "quote_id": "earthlinkweb-150213112111-conversion-gate02_95_text1"
+      },
+      {
+        "doc": "inditex_2021",
+        "quote_id": "inditex_2021_text11"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "2309.17421v2",
+        "path": "images/2309.17421v2_image342.jpg"
+      },
+      {
+        "doc": "2303.05039v2",
+        "path": "images/2303.05039v2_image7.jpg"
+      },
+      {
+        "doc": "2303.05039v2",
+        "path": "images/2303.05039v2_image6.jpg"
+      }
+    ],
+    "retrieval_ms": 2017,
+    "generation_ms": 5332,
+    "total_ms": 7349,
+    "test_id": "TEST_10477",
+    "gold_quote_ids": [
+      "ecommerceopportunityindia-141124010546-conversion-gate01_95_image4",
+      "ecommerceopportunityindia-141124010546-conversion-gate01_95_text6",
+      "ecommerceopportunityindia-141124010546-conversion-gate01_95_image5",
+      "ecommerceopportunityindia-141124010546-conversion-gate01_95_image8"
+    ],
+    "reference": "The analysis of category-wise transaction volumes and their gross margin contributions reveals significant insights into the e-commerce business model. \n\n![Categories by Number of Transactions](image8) \n\nThe pie chart above shows that Fashion, Footwear & Accessories (35%) and Books (21%) dominate the number of transactions in online retail. Mobile, Tablets & Accessories, and Electronics also constitute significant shares at 9% and 10%, respectively.\n\n![Categories by Gross Margin](image4)\n\nHowever, when we look at the gross margin contributions, the categories of Mobile, Tablets & Accessories (35%) and Computers, Cameras, Electronics & Appliances (18%) lead the way, indicating these products are more profitable compared to their transaction volume. Fashion, Footwear & Accessories, although leading in transaction volume, contributes 28% to the gross margin, highlighting their importance in volume but lesser in profitability compared to electronics.\n\nThese insights align with the two-sided e-commerce business model, which emphasizes **Widest Selection** and **Great Shopping Experience** for demand generation, while focusing on logistics and supply of high-margin electronics to maximize profitability.\n\n![Two-Sided Business Model](image5)[6]\n\n**Implications:**\n- **Supply Chain Focus**: E-commerce platforms should ensure a steady supply of electronics due to their high margin contributions.\n- **Demand Generation**: Maintain diversified fashion trends to cater to high transaction volumes, ensuring consistent customer engagement.\n- **Strategic Pricing and Promotions**: Align promotional efforts with products that have high transaction volumes but relatively lower margins, like fashion, to encourage more purchases and maintain profitability.\n\nThis strategic approach can optimize both supply and demand dynamics, leveraging transaction volumes for customer retention and gross margins for profitability."
+  },
+  {
+    "query": "How do the SWEM models compare to other models in terms of performance and computational efficiency across different datasets?",
+    "answer": "According to Image 1, SWEM models show better results on GSM8k and MATH datasets compared to LSTM or CNN. For instance, at a size of 7B parameters, SWEM-concat achieves an accuracy of 6.8 on GSM8k while taking only one-tenth the number of parameters (61K) relative to LSTM. This indicates that SWEM is more parameter-efficient and computationally efficient compared to other models like LSTM or CNN for these tasks.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "P18-1041",
+        "quote_id": "P18-1041_text8"
+      },
+      {
+        "doc": "P18-1041",
+        "quote_id": "P18-1041_text1"
+      },
+      {
+        "doc": "2303.08559v2",
+        "quote_id": "2303.08559v2_text8"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "2307.09288v2",
+        "path": "images/2307.09288v2_image49.jpg"
+      },
+      {
+        "doc": "P19-1561",
+        "path": "images/P19-1561_image5.jpg"
+      },
+      {
+        "doc": "P18-1041",
+        "path": "images/P18-1041_image9.jpg"
+      }
+    ],
+    "retrieval_ms": 89,
+    "generation_ms": 8610,
+    "total_ms": 8699,
+    "test_id": "TEST_1825",
+    "gold_quote_ids": [],
+    "reference": "The comparative analysis of SWEM models with other models reveals notable insights across multiple datasets and performance metrics. Here is a detailed comparison involving performance and computational efficiency:\n\n1. **Performance Across Datasets**:\n\n   The table in Figure 1 presents the performance of various models, including SWEM variants, across several datasets such as Yahoo! Answers, AG News, Yelp Reviews, and DBpedia. Notably, the SWEM-concat model achieved the best performance on Yahoo! Answers, AG News, and DBpedia datasets, indicating its strong capability in topic categorization and ontology classification tasks[6].\n\n   ![Comparative Analysis](image2)\n\n   Further comparisons in Figure 4 show that SWEM-hier and other SWEM variants also perform well in sentiment analysis and short sentence classification tasks. For instance, SWEM-hier outperformed other models on SST-2 and matched closely with top-performing models on other datasets like MR and Subj.\n\n   ![Performance on Short Sentence Classification](image1)\n\n2. **Computational Efficiency**:\n\n   Computational efficiency is a critical factor in model selection, especially when dealing with large datasets and real-time applications. Figure 3 highlights the significant advantage of SWEM models in terms of parameters and speed. The SWEM model, with only 61K parameters, is substantially more efficient compared to CNN (541K parameters) and LSTM (1.8M parameters), with processing speeds of 63 seconds for SWEM, 171 seconds for CNN, and 598 seconds for LSTM[10].\n\n   ![Speed and Parameters](image3)\n\n3. **Analysis**:\n\n   - **Accuracy**: SWEM models, particularly SWEM-concat and SWEM-hier, have shown competitive accuracy on several datasets. For example, SWEM-concat achieved 92.66% on AG News and 98.57% on DBpedia, which are among the highest scores reported.\n   - **Efficiency**: The reduced number of parameters and faster processing times make SWEM models more efficient compared to traditional models like CNN and LSTM. This efficiency does not come at the cost of performance, as SWEM models still achieve high accuracy.\n   - **Topic Categorization and Sentiment Analysis**: SWEM models excel in tasks like topic categorization and sentiment analysis, leveraging their simplified architecture to balance performance and computational demands effectively.\n\nIn conclusion, SWEM models provide a balanced approach with competitive performance and significant computational efficiency, making them suitable for various text classification tasks across different datasets."
+  },
+  {
+    "query": "What is the difference in Return on Invested Capital (ROIC) between the periods ending May 31, 2021, and May 31, 2020, and how is it calculated?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "NYSE_TME_2021",
+        "quote_id": "NYSE_TME_2021_text1"
+      },
+      {
+        "doc": "COSTCO_2021_10K",
+        "quote_id": "COSTCO_2021_10K_text7"
+      },
+      {
+        "doc": "NYSE_WFC_2021",
+        "quote_id": "NYSE_WFC_2021_text6"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "f86d073b0d735ac873a65d906ba82758",
+        "path": "images/f86d073b0d735ac873a65d906ba82758_image25.jpg"
+      },
+      {
+        "doc": "f86d073b0d735ac873a65d906ba82758",
+        "path": "images/f86d073b0d735ac873a65d906ba82758_image24.jpg"
+      },
+      {
+        "doc": "NASDAQ_TSLA_2020",
+        "path": "images/NASDAQ_TSLA_2020_image2.jpg"
+      }
+    ],
+    "retrieval_ms": 80,
+    "generation_ms": 4919,
+    "total_ms": 4999,
+    "test_id": "TEST_410",
+    "gold_quote_ids": [],
+    "reference": "### Return on Invested Capital (ROIC) Comparison\n\nThe Return on Invested Capital (ROIC) for the company is a measure of its profitability and efficiency in utilizing its capital. This metric is calculated by dividing the earnings before interest and after taxes by the total invested capital. Below is the breakdown for the periods ending May 31, 2021, and May 31, 2020.\n\n#### ROIC Values\n- **May 31, 2021**: The ROIC is **48.8%**.\n- **May 31, 2020**: The ROIC is **21.5%**.\n- **Difference**: There is an increase of **27.3%** in ROIC from 2020 to 2021.\n\n#### Calculation Steps\n1. **Numerator** (Earnings Before Interest and After Taxes):\n   - May 31, 2021: $5,953 million\n   - May 31, 2020: $2,624 million\n\n2. **Denominator** (Total Invested Capital):\n   - May 31, 2021: $12,196 million\n   - May 31, 2020: $12,204 million\n\n3. **ROIC Formula**:\n   \n   \\[ \\text{ROIC} = \\frac{\\text{Earnings Before Interest and After Taxes}}{\\text{Total Invested Capital}} \\times 100 \\]\n\nApplying the formula:\n- For 2021: \\( \\frac{5,953}{12,196} \\times 100 = 48.8\\% \\)\n- For 2020: \\( \\frac{2,624}{12,204} \\times 100 = 21.5\\% \\)\n\nThis significant increase in ROIC demonstrates improved profitability and better efficiency in capital usage by the company.[7]\n\n![ROIC Calculation Table](image3)"
+  },
+  {
+    "query": "How many figures are shown in this guidebook to teach users \"Two-finger scrolling\" tips?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "User_Manual_1500S_Classic_EN",
+        "quote_id": "User_Manual_1500S_Classic_EN_text10"
+      },
+      {
+        "doc": "honor_watch_gs_pro",
+        "quote_id": "honor_watch_gs_pro_text7"
+      },
+      {
+        "doc": "91521110100M_4K_UHD_Display_User_Manual_V1.1",
+        "quote_id": "91521110100M_4K_UHD_Display_User_Manual_V1.1_text10"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "owners-manual-2170416",
+        "path": "images/owners-manual-2170416_image16.jpg"
+      },
+      {
+        "doc": "t480_ug_en",
+        "path": "images/t480_ug_en_image61.jpg"
+      },
+      {
+        "doc": "Macbook_air",
+        "path": "images/Macbook_air_image11.jpg"
+      }
+    ],
+    "retrieval_ms": 95,
+    "generation_ms": 4629,
+    "total_ms": 4724,
+    "test_id": "TEST_12150",
+    "gold_quote_ids": [
+      "Macbook_air_image2"
+    ],
+    "reference": "The guidebook contains one figure to teach users the \"Two-finger scrolling\" tip. The relevant figure shows a hand on a touchpad using two fingers to perform a multi-directional scrolling gesture. This gesture is indicated by blue arrows pointing in all four directions — up, down, left, and right — illustrating the capability of two-finger scrolling on a touchpad.\n\n![Two-finger scrolling](image2)"
+  },
+  {
+    "query": "What is the trend in 'Non-GAAP free cash flow' from 2013 to 2015, and how is it reconciled with operating cash flow?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "NYSE_PM_2020",
+        "quote_id": "NYSE_PM_2020_text10"
+      },
+      {
+        "doc": "NYSE_PEP_2020",
+        "quote_id": "NYSE_PEP_2020_text8"
+      },
+      {
+        "doc": "NYSE_MCD_2020",
+        "quote_id": "NYSE_MCD_2020_text2"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "NYSE_MS_2020",
+        "path": "images/NYSE_MS_2020_image21.jpg"
+      },
+      {
+        "doc": "f86d073b0d735ac873a65d906ba82758",
+        "path": "images/f86d073b0d735ac873a65d906ba82758_image21.jpg"
+      },
+      {
+        "doc": "siemens-healthineers_2021",
+        "path": "images/siemens-healthineers_2021_image7.jpg"
+      }
+    ],
+    "retrieval_ms": 314,
+    "generation_ms": 6112,
+    "total_ms": 6427,
+    "test_id": "TEST_4507",
+    "gold_quote_ids": [
+      "NETFLIX_2015_10K_image1",
+      "NETFLIX_2015_10K_text1",
+      "NETFLIX_2015_10K_text3"
+    ],
+    "reference": "The 'Non-GAAP free cash flow' demonstrates a steady decline over the three years covered:\n- 2013: $(16,300)\n- 2014: $(126,699)\n- 2015: $(920,557)\n\nThis trend is primarily due to increasing cash outflows from acquisitions and purchases, as well as reduced positive operating cash flow over the years.\n\nHere is the reconciliation process for 'Non-GAAP free cash flow' based on the given data:\n1. Start with the **Net cash (used in) provided by operating activities**:\n   - 2015: $(749,439)\n   - 2014: $16,483\n   - 2013: $97,831\n\n2. Subtract the cash used for:\n   - **Acquisition of DVD content assets:**\n     - 2015: $(77,958)\n     - 2014: $(74,790)\n     - 2013: $(65,927)\n   - **Purchases of property and equipment:**\n     - 2015: $(91,248)[1]\n     - 2014: $(69,726)[3]\n     - 2013: $(54,143)\n   - **Other assets:**\n     - 2015: $(1,912)\n     - 2014: $1,334\n     - 2013: $5,939\n\nThe resulting 'Non-GAAP free cash flow' demonstrates how much cash is left after these operational and capital expenditures.\n\n### Supporting Data Table:\n![Non-GAAP Free Cash Flow Reconciliation](image1)\n\nThis table highlights the increasing negative value of free cash flow over the years, reflecting higher outflows in acquisitions and property purchases, combined with declining operating cash flow."
+  },
+  {
+    "query": "What are the humanitarian and logistical challenges depicted through the images related to the Gaza crisis?",
+    "answer": "The information was not found in the retrieved documents. The provided context does not mention any humanitarian or logistical challenges related to the Gaza crisis, nor do it include financial data or maps that could provide such details.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "2023555906",
+        "quote_id": "2023555906_text3"
+      },
+      {
+        "doc": "2023555906",
+        "quote_id": "2023555906_text2"
+      },
+      {
+        "doc": "DOS-FY2023-Agency-Financial-Report-508",
+        "quote_id": "DOS-FY2023-Agency-Financial-Report-508_text11"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "NASDAQ_ATLX_2020",
+        "path": "images/NASDAQ_ATLX_2020_image7.jpg"
+      },
+      {
+        "doc": "0e94b4197b10096b1f4c699701570fbf",
+        "path": "images/0e94b4197b10096b1f4c699701570fbf_image16.jpg"
+      },
+      {
+        "doc": "2306.05425v1",
+        "path": "images/2306.05425v1_image0.jpg"
+      }
+    ],
+    "retrieval_ms": 101,
+    "generation_ms": 6212,
+    "total_ms": 6313,
+    "test_id": "TEST_4013",
+    "gold_quote_ids": [],
+    "reference": "The humanitarian and logistical challenges in the Gaza crisis are vividly portrayed through a series of images. In figure 1, the urgency of the medical response is depicted. Several individuals, including medical personnel, are shown carrying injured children towards a hospital, emphasizing the immediate need for medical care amidst a crisis. This image highlights the strain on healthcare facilities and the critical nature of emergency medical services in conflict zones.\n\n![Gaza Medical Response](image5)\n\nIn figure 2, the logistical challenge of food distribution is evident. A group of people surrounds a man distributing food, suggesting a community effort to provide for displaced individuals. This setting implies the difficulties in ensuring food security and the necessity for organized aid distribution during crises.\n\n![Food Aid Distribution](image2)\n\nTogether, these images illustrate the multifaceted challenges faced in humanitarian crises, including the need for quick medical interventions and efficient food distribution to support affected populations."
+  },
+  {
+    "query": "How did the sales trends of Repatha® and Aranesp® compare across different regions between 2018 and 2020?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "NYSE_PG_2022",
+        "quote_id": "NYSE_PG_2022_text8"
+      },
+      {
+        "doc": "NYSE_PG_2022",
+        "quote_id": "NYSE_PG_2022_text3"
+      },
+      {
+        "doc": "NYSE_CAT_2021",
+        "quote_id": "NYSE_CAT_2021_text8"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "NYSE_NVO_2020",
+        "path": "images/NYSE_NVO_2020_image87.jpg"
+      },
+      {
+        "doc": "OTC_NSRGY_2020",
+        "path": "images/OTC_NSRGY_2020_image94.jpg"
+      },
+      {
+        "doc": "indonesiamobilemarketresearch-ag-150106055934-conversion-gate02_95",
+        "path": "images/indonesiamobilemarketresearch-ag-150106055934-conversion-gate02_95_image11.jpg"
+      }
+    ],
+    "retrieval_ms": 90,
+    "generation_ms": 5626,
+    "total_ms": 5716,
+    "test_id": "TEST_3658",
+    "gold_quote_ids": [],
+    "reference": "Repatha® and Aranesp® exhibited contrasting sales trends across different regions between 2018 and 2020. Repatha® experienced significant growth in both the U.S. and Rest of World (ROW) regions, whereas Aranesp® sales declined in both regions over the same period. Below is a detailed comparison of their sales trends:\n\n![Repatha Sales](image6)\n\nFor Repatha®:\n- **U.S. Sales:** Increased from $358 million in 2018 to $459 million in 2020, reflecting a 22% increase from 2019 to 2020 and a 5% increase from 2018 to 2019.\n- **ROW Sales:** Increased from $192 million in 2018 to $428 million in 2020, showing a 50% increase from 2019 to 2020 and a 48% increase from 2018 to 2019.\n- **Total Sales:** Increased from $550 million in 2018 to $887 million in 2020, a 34% increase from 2019 to 2020 and a 20% increase from 2018 to 2019.\n\n![Aranesp Sales](image2)\n\nFor Aranesp®:\n- **U.S. Sales:** Decreased from $942 million in 2018 to $629 million in 2020, reflecting a 17% decrease from 2019 to 2020 and a 20% decrease from 2018 to 2019.[4]\n- **ROW Sales:** Decreased from $935 million in 2018 to $939 million in 2020, showing a 3% decrease from 2019 to 2020 but a 4% increase from 2018 to 2019.\n- **Total Sales:** Decreased from $1,877 million in 2018 to $1,568 million in 2020, a 9% decrease from 2019 to 2020 and an 8% decrease from 2018 to 2019.\n\nIn summary, Repatha® demonstrated robust growth in both the U.S. and international markets, contributing to an overall increase in total sales. In contrast, Aranesp® sales declined in both regions, leading to a decrease in total sales over the analyzed period."
+  },
+  {
+    "query": "How is the Corporate Executive Committee expanded in the organizational structure of the company, and what are the added functions?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "ASX_AJY_2020",
+        "quote_id": "ASX_AJY_2020_text1"
+      },
+      {
+        "doc": "ASX_AJY_2020",
+        "quote_id": "ASX_AJY_2020_text11"
+      },
+      {
+        "doc": "ASX_AJY_2020",
+        "quote_id": "ASX_AJY_2020_text2"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "efis-140411041451-phpapp01_95",
+        "path": "images/efis-140411041451-phpapp01_95_image10.jpg"
+      },
+      {
+        "doc": "bigdatatrends-120723191058-phpapp02_95",
+        "path": "images/bigdatatrends-120723191058-phpapp02_95_image13.jpg"
+      },
+      {
+        "doc": "dr-vorapptchapter1emissionsources-121120210508-phpapp02_95",
+        "path": "images/dr-vorapptchapter1emissionsources-121120210508-phpapp02_95_image9.jpg"
+      }
+    ],
+    "retrieval_ms": 64,
+    "generation_ms": 5074,
+    "total_ms": 5138,
+    "test_id": "TEST_2287",
+    "gold_quote_ids": [],
+    "reference": "The Corporate Executive Committee in the company's organizational structure is expanded into the Enlarged Corporate Executive Committee. The expansion includes additional functions and roles that are crucial for the company's operations. The new roles added to the Enlarged Corporate Executive Committee are:\n\n1. **gRED**: This typically refers to Genentech Research and Early Development, focusing on research and innovation in biotechnology.\n2. **pRED**: This likely stands for Pharmaceutical Research and Early Development, emphasizing the development of new pharmaceutical products.\n3. **Partnering**: This function likely involves collaborations and partnerships with other entities, which can include strategic alliances and business development.\n4. **Communications**: This role is essential for managing the company's internal and external communications, ensuring clear and effective information dissemination.\n5. **General Counsel**: This position is responsible for overseeing the company's legal matters, ensuring compliance with laws and regulations, and providing legal advice.\n\nThe inclusion of these roles enhances the company's ability to innovate, manage partnerships, communicate effectively, and handle legal responsibilities, thereby strengthening its governance structure.\n\n![Organizational Structure](image5)"
+  },
+  {
+    "query": "What does the Bergen Maritime Museum offer to visitors?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "Bergen-Brochure-en-2022-23",
+        "quote_id": "Bergen-Brochure-en-2022-23_text6"
+      },
+      {
+        "doc": "Bergen-Brochure-en-2022-23",
+        "quote_id": "Bergen-Brochure-en-2022-23_text11"
+      },
+      {
+        "doc": "Bergen-Brochure-en-2022-23",
+        "quote_id": "Bergen-Brochure-en-2022-23_text9"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "Bergen-Brochure-en-2022-23",
+        "path": "images/Bergen-Brochure-en-2022-23_image13.jpg"
+      },
+      {
+        "doc": "Bergen-Brochure-en-2022-23",
+        "path": "images/Bergen-Brochure-en-2022-23_image19.jpg"
+      },
+      {
+        "doc": "2020.sltu-1.28",
+        "path": "images/2020.sltu-1.28_image0.jpg"
+      }
+    ],
+    "retrieval_ms": 104,
+    "generation_ms": 4600,
+    "total_ms": 4704,
+    "test_id": "TEST_12067",
+    "gold_quote_ids": [
+      "Bergen-Brochure-en-2022-23_text5",
+      "Bergen-Brochure-en-2022-23_image2"
+    ],
+    "reference": "The Bergen Maritime Museum provides a rich exploration of the development of shipping and its significance to both Bergen and Norway, spanning from the Iron Age and Viking Age to the contemporary period. The museum is renowned for its exhibitions that include high-quality boats, model ships, equipment, and paintings, all contributing to a comprehensive understanding of maritime history.\n\n![Ship's Wheel](image2)\n\nThe museum itself is housed in an architectural gem, set amidst beautiful surroundings, enhancing the overall visitor experience. From June to August, guided tours are available[5], offering in-depth insights into the exhibitions and the history they represent. Additionally, the museum caters to families with activities specifically designed for children[5], ensuring an engaging visit for all ages. Visitors can conveniently reach the museum via the Møhlenpris bus stop[5], making it an accessible destination for those interested in maritime history."
+  },
+  {
+    "query": "How did the net cash provided by operating activities for ME&T compare between 2021 and 2020, and what were the major contributing factors?",
+    "answer": "The information was not found in the retrieved documents. The provided text passages and financial images do not contain any data or details about ME&T's net cash provided by operating activities for 2021 or comparisons with 2020.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "NYSE_PM_2020",
+        "quote_id": "NYSE_PM_2020_text10"
+      },
+      {
+        "doc": "NYSE_PEP_2020",
+        "quote_id": "NYSE_PEP_2020_text8"
+      },
+      {
+        "doc": "NYSE_MCD_2020",
+        "quote_id": "NYSE_MCD_2020_text11"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "NYSE_ACN_2020",
+        "path": "images/NYSE_ACN_2020_image30.jpg"
+      },
+      {
+        "doc": "OTC_NSRGY_2020",
+        "path": "images/OTC_NSRGY_2020_image94.jpg"
+      },
+      {
+        "doc": "NYSE_NVO_2020",
+        "path": "images/NYSE_NVO_2020_image90.jpg"
+      }
+    ],
+    "retrieval_ms": 94,
+    "generation_ms": 6569,
+    "total_ms": 6663,
+    "test_id": "TEST_1680",
+    "gold_quote_ids": [],
+    "reference": "ME&T net cash provided by operating activities increased from $4,054 million in 2020 to $7,177 million in 2021. This significant rise can be attributed to several factors outlined in the financial statements and supporting figures. Below is a detailed comparison and analysis of these factors:\n\n### Comparison of Net Cash Provided by Operating Activities\n\n**2021:** $7,177 million\n**2020:** $4,054 million\n\n![ME&T Net Cash](image5)\n\n### Major Contributing Factors\n\n1. **Operating Profit:**\n   - The increase in operating profit from 2020 to 2021, as shown in figure 1, where the operating profit for the twelve months ended December 31, 2021, was $6,878 million compared to $4,553 million in 2020.\n   ![Operating Profit](image1)\n\n2. **Depreciation and Amortization:**\n   - Depreciation and amortization expenses were relatively stable, with $2,352 million in 2021 and $2,432 million in 2020, as indicated in the consolidated statement of cash flows.\n\n3. **Changes in Assets and Liabilities:**\n   - Significant changes in assets and liabilities also played a crucial role. For instance, the changes in receivables, inventories, and accounts payable had a notable impact on the net cash provided by operating activities.\n   ![Consolidated Cash Flow](image2)\n\n4. **Adjustments for Non-Cash Items:**\n   - Adjustments for non-cash items such as actuarial (gains) losses on pension and postretirement benefits and provisions for deferred income taxes influenced the overall cash flow.\n\n### Conclusion\nThe combination of increased operating profit, stable depreciation and amortization expenses, and significant changes in working capital components like receivables and inventories resulted in a higher net cash provided by operating activities for ME&T in 2021 compared to 2020. The detailed figures and tables highlight these key financial movements over the two years.[2]"
+  },
+  {
+    "query": "How does Bank of America address environmental issues such as air pollution and greenhouse gas emissions, and what impacts do these have on their operations and society?",
+    "answer": "Bank of America addresses environmental issues by focusing on both direct (Scope 1) and indirect (Scope 2) greenhouse gas emissions. According to the retrieved text from NYSE_BAC_2020, Bank of America's response includes efforts to address social and racial justice issues, which may indirectly contribute to reducing air pollution and greenhouse gas emissions through community engagement and policy advocacy. The company also reports on its energy consumption within operations and fuel use in diesel generators (DG sets) and company vehicles, indicating a comprehensive approach to managing environmental impacts across different aspects of their business.\n\nThe information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "NYSE_BRK-A_2021",
+        "quote_id": "NYSE_BRK-A_2021_text6"
+      },
+      {
+        "doc": "NYSE_BAC_2020",
+        "quote_id": "NYSE_BAC_2020_text7"
+      },
+      {
+        "doc": "NYSE_HDB_2021",
+        "quote_id": "NYSE_HDB_2021_text8"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "efd88e41c5f2606c57929cac6c1c0605",
+        "path": "images/efd88e41c5f2606c57929cac6c1c0605_image0.jpg"
+      },
+      {
+        "doc": "NYSE_BAC_2020",
+        "path": "images/NYSE_BAC_2020_image0.jpg"
+      },
+      {
+        "doc": "LSE_BHP_2021",
+        "path": "images/LSE_BHP_2021_image72.jpg"
+      }
+    ],
+    "retrieval_ms": 104,
+    "generation_ms": 9010,
+    "total_ms": 9115,
+    "test_id": "TEST_11088",
+    "gold_quote_ids": [
+      "NYSE_BAC_2020_image1",
+      "NYSE_BAC_2020_text4",
+      "NYSE_BAC_2020_text12",
+      "NYSE_BAC_2020_image3"
+    ],
+    "reference": "Bank of America has implemented several initiatives to address environmental issues, specifically focusing on greenhouse gas emissions and air pollution. These efforts are aligned with broader environmental goals and regulatory frameworks.\n\n### Greenhouse Gas Emissions\nBank of America's approach to managing greenhouse gas (GHG) emissions is detailed in the metrics provided under the theme 'Planet'. The bank reports on its emissions across various scopes, including location-based, market-based, and those related to purchased and capital goods. The bank's 2019 emissions are categorized into different scopes such as Scope 1, 2, and 3, covering direct and indirect emissions, including those from employee commuting and other business activities. The bank has set targets to reach net-zero GHG emissions by 2050, aligning with the Paris Agreement goals, which aim to limit global warming to well below 2°C[12].\n\n![Climate Change Metrics](image1)\n\n### Air Pollution\nIn terms of air pollution, Bank of America reports the emissions of nitrogen oxides (NOx), sulfur oxides (SOx), carbon monoxide (CO), volatile organic compounds (VOC), and particulate matter from their global operations. The bank assesses the societal costs of these emissions, which were estimated at $146,000 for 2019. This valuation is based on social cost factors developed through international academic studies.\n\n![Air Pollution Metrics](image3)\n\n### Impacts on Operations and Society\nThe societal impact of GHG emissions for the bank in 2019 was estimated at $238 million, calculated using the EPA's social cost of carbon. These impacts highlight the financial implications of environmental policies and underscore the importance of strategic emissions reduction efforts[4].\n\nCollectively, these strategies demonstrate Bank of America's commitment to reducing its environmental footprint and contributing to broader societal well-being by mitigating the adverse effects of its operations on air quality and climate change."
+  },
+  {
+    "query": "How can you customize the watch face background on the HONOR Watch GS Pro using different image sources?",
+    "answer": "To customize the watch face background on the HONOR Watch GS Pro, follow these steps:\n\n1. Open the Huawei Health app.\n2. Navigate to the Gallery screen and select \"Background\" from the options at the bottom of the screen.\n3. Tap the plus sign in a red-bordered circle located at the lower left side of the screen to add new images or backgrounds.\n\nThe information was found in the retrieved documents, specifically in the passage related to the HONOR Watch GS Pro's customization features.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "honor_watch_gs_pro",
+        "quote_id": "honor_watch_gs_pro_text1"
+      },
+      {
+        "doc": "honor_watch_gs_pro",
+        "quote_id": "honor_watch_gs_pro_text11"
+      },
+      {
+        "doc": "honor_watch_gs_pro",
+        "quote_id": "honor_watch_gs_pro_text4"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "honor_watch_gs_pro",
+        "path": "images/honor_watch_gs_pro_image19.jpg"
+      },
+      {
+        "doc": "honor_watch_gs_pro",
+        "path": "images/honor_watch_gs_pro_image20.jpg"
+      },
+      {
+        "doc": "honor_watch_gs_pro",
+        "path": "images/honor_watch_gs_pro_image21.jpg"
+      }
+    ],
+    "retrieval_ms": 57,
+    "generation_ms": 7708,
+    "total_ms": 7765,
+    "test_id": "TEST_12136",
+    "gold_quote_ids": [
+      "honor_watch_gs_pro_image1",
+      "honor_watch_gs_pro_text12",
+      "honor_watch_gs_pro_image7"
+    ],
+    "reference": "To customize the watch face background on the HONOR Watch GS Pro, follow these steps:\n\n1. **Access the Gallery**: Open the Gallery section where you can see the current watch face display and customization options.\n\n2. **Upload an Image**: You can upload an image to use as your background. This can be done by selecting the 'Upload' option which allows you to choose between two sources: your Camera or Gallery.\n\n   ![Upload Options](image1)\n\n3. **Set and Save the Background**: After selecting your desired image, it will be displayed as the watch face background. You need to press 'Set as default' to apply this background. Once satisfied with the selection, press 'Save' to confirm the changes.\n\n   ![Save Background](image7)\n\nThese steps utilize the multi-modal interface on your device, making it easy to personalize your watch face using images from different sources, such as directly capturing a new photo or selecting one from your existing gallery[12]."
+  },
+  {
+    "query": "How did the total credit card and home equity metrics change between 2019 and 2020, and what might these changes indicate about consumer behavior?",
+    "answer": "The information was not found in the retrieved documents. The provided context does not include data on total credit card or home equity metrics for the years 2019 and 2020, nor does it provide insights into consumer behavior based on such metrics.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "NYSE_AXP_2021",
+        "quote_id": "NYSE_AXP_2021_text5"
+      },
+      {
+        "doc": "NYSE_WFC_2021",
+        "quote_id": "NYSE_WFC_2021_text6"
+      },
+      {
+        "doc": "NYSE_AXP_2021",
+        "quote_id": "NYSE_AXP_2021_text4"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "ecommerceopportunityindia-141124010546-conversion-gate01_95",
+        "path": "images/ecommerceopportunityindia-141124010546-conversion-gate01_95_image18.jpg"
+      },
+      {
+        "doc": "NYSE_CVX_2021",
+        "path": "images/NYSE_CVX_2021_image52.jpg"
+      },
+      {
+        "doc": "NYSE_MS_2020",
+        "path": "images/NYSE_MS_2020_image5.jpg"
+      }
+    ],
+    "retrieval_ms": 79,
+    "generation_ms": 6962,
+    "total_ms": 7041,
+    "test_id": "TEST_8936",
+    "gold_quote_ids": [
+      "NYSE_BAC_2020_image1",
+      "NYSE_BAC_2020_text9",
+      "NYSE_BAC_2020_image2",
+      "NYSE_BAC_2020_text6",
+      "NYSE_BAC_2020_text5",
+      "NYSE_BAC_2020_image4"
+    ],
+    "reference": "The financial data provided in figures highlight several changes in consumer behavior between 2019 and 2020, particularly in the areas of credit cards and home equity.\n\n![Total Credit Card Metrics](image2)\n\nIn Figure 1, we see a decrease in new credit card accounts from 4,320 thousand in 2019 to 2,505 thousand in 2020. This significant drop suggests a decline in consumer confidence or a reduced need for credit, possibly due to economic uncertainties or changes in spending habits during 2020[6]. Additionally, the purchase volumes dropped from $277,852 million in 2019 to $251,599 million in 2020, further supporting the idea of reduced consumer spending or credit usage[6].\n\n![Home Equity Metrics](image4)\n\nFigure 2 shows the home equity values under Consumer Banking, which decreased from $9,755 million in 2019 to $6,930 million in 2020[5][9]. This trend could imply a reduction in home equity borrowing[5], which can be linked to shifts in housing market conditions or consumers being more cautious with leveraging home equity during uncertain times.\n\n![Income and Efficiency](image1)\n\nFigure 3 provides broader financial context, showing that total revenue, net of interest expense, decreased by 5% from 2019 to 2020, while net income decreased by 28%. The efficiency ratio increased, which could indicate operational challenges in maintaining profitability amidst lower consumer credit utilization and spending.\n\nOverall, these changes in credit card and home equity metrics suggest a cautious consumer approach in 2020, likely influenced by economic conditions and uncertainties. This behavior might reflect reduced borrowing and spending, aligned with a broader trend of financial conservatism during the period."
+  },
+  {
+    "query": "How do the core operating incomes in 2021 differ across the Innovative Medicines, Sandoz, and Corporate segments, and what adjustments contribute to these differences?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "siemens-healthineers_2021",
+        "quote_id": "siemens-healthineers_2021_text3"
+      },
+      {
+        "doc": "NYSE_ACN_2020",
+        "quote_id": "NYSE_ACN_2020_text5"
+      },
+      {
+        "doc": "NYSE_PM_2020",
+        "quote_id": "NYSE_PM_2020_text3"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "NYSE_NVO_2020",
+        "path": "images/NYSE_NVO_2020_image90.jpg"
+      },
+      {
+        "doc": "NYSE_PEP_2020",
+        "path": "images/NYSE_PEP_2020_image47.jpg"
+      },
+      {
+        "doc": "NYSE_NVO_2020",
+        "path": "images/NYSE_NVO_2020_image91.jpg"
+      }
+    ],
+    "retrieval_ms": 361,
+    "generation_ms": 5791,
+    "total_ms": 6152,
+    "test_id": "TEST_1425",
+    "gold_quote_ids": [],
+    "reference": "In 2021, the core operating incomes for the different segments of the company show significant variations, which are influenced by specific adjustments made to the IFRS results. Here's a detailed analysis:\n\n### Innovative Medicines\n- **Core Operating Income:** $11,381 million\n- **Adjustments:**\n  - Amortization of intangible assets: Substantial adjustments are made for amortization, which impacts the core results.\n  - Impairments and acquisitions/divestments: These adjustments also play a role, though to a lesser extent compared to amortization.\n\nRefer to the detailed table below for the exact breakdown:\n![Innovative Medicines Adjustments](image5)\n\n### Sandoz\n- **Core Operating Income:** $2,064 million\n- **Adjustments:**\n  - Amortization of intangible assets: This adjustment is significant, affecting the core operating income positively.\n  - Impairments and acquisitions/divestments: These adjustments also contribute to the final core results.\n\nRefer to the detailed table below for the exact breakdown:\n![Sandoz Adjustments](image4)\n\n### Corporate\n- **Core Operating Loss:** -$691 million\n- **Adjustments:**\n  - Impairments: A major negative adjustment, significantly impacting the core results.\n  - Other items include adjustments for acquisitions or divestments, which also negatively affect the operating income.\n\nRefer to the detailed table below for the exact breakdown:\n![Corporate Adjustments](image3)\n\n### Conclusion\nThe differences in core operating incomes across these segments are primarily driven by adjustments related to amortization, impairments, and acquisitions or divestments[5]. These adjustments reflect the strategic financial decisions made by the company to align IFRS results with core operational benchmarks, showing a clear disparity in financial performance across different business segments. The Innovative Medicines segment shows robust performance with substantial core income[10], while the Corporate segment records a loss, highlighting different financial and operational challenges faced by each segment."
+  },
+  {
+    "query": "What is the accuracy of DS-DST for the hotel-type slot?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "amb-siteaudits-ds15-150204174043-conversion-gate01_95",
+        "quote_id": "amb-siteaudits-ds15-150204174043-conversion-gate01_95_text1"
+      },
+      {
+        "doc": "2020.starsem-1.17",
+        "quote_id": "2020.starsem-1.17_text7"
+      },
+      {
+        "doc": "P19-1078",
+        "quote_id": "P19-1078_text5"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "DSA-278777",
+        "path": "images/DSA-278777_image11.jpg"
+      },
+      {
+        "doc": "t480_ug_en",
+        "path": "images/t480_ug_en_image57.jpg"
+      },
+      {
+        "doc": "DSA-278777",
+        "path": "images/DSA-278777_image14.jpg"
+      }
+    ],
+    "retrieval_ms": 77,
+    "generation_ms": 4873,
+    "total_ms": 4950,
+    "test_id": "TEST_9675",
+    "gold_quote_ids": [
+      "2020.starsem-1.17_text7",
+      "2020.starsem-1.17_image3"
+    ],
+    "reference": "The accuracy of DS-DST for the hotel-type slot is 86.36%. This information is extracted from the table presented in figure 1, which lists various \"Slot Names\" and their corresponding statistics under the category DS-DST. The row for the hotel-type slot specifically shows an accuracy percentage of 86.36% in the DS-DST column.[7]\n\n![DS-Span Table](image3)"
+  },
+  {
+    "query": "What is the estimated financial impact of Bank of America's air pollution emissions in 2019?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "NYSE_BRK-A_2021",
+        "quote_id": "NYSE_BRK-A_2021_text6"
+      },
+      {
+        "doc": "NYSE_HDB_2021",
+        "quote_id": "NYSE_HDB_2021_text8"
+      },
+      {
+        "doc": "NYSE_BAC_2020",
+        "quote_id": "NYSE_BAC_2020_text7"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "NYSE_IBM_2020",
+        "path": "images/NYSE_IBM_2020_image31.jpg"
+      },
+      {
+        "doc": "NYSE_MCD_2020",
+        "path": "images/NYSE_MCD_2020_image11.jpg"
+      },
+      {
+        "doc": "NYSE_CVX_2021",
+        "path": "images/NYSE_CVX_2021_image52.jpg"
+      }
+    ],
+    "retrieval_ms": 75,
+    "generation_ms": 4879,
+    "total_ms": 4954,
+    "test_id": "TEST_6913",
+    "gold_quote_ids": [
+      "NYSE_BAC_2020_image7"
+    ],
+    "reference": "The estimated financial impact of Bank of America's air pollution emissions in 2019 was $146,000. This estimation is based on the social cost factors for various pollutants such as sulfur oxides (SOx), nitrogen oxides (NOx), carbon monoxide (CO), volatile organic compounds (VOC), and particulate matter (PM).\n\n![Air Pollution Impact](image7)\n\nThe social cost factors were derived from the World Resources Institute’s Transport Emissions & Social Cost Assessment (TESCA) Tool v1.0. These factors represent weighted averages taken from a comprehensive meta-analysis of international academic studies. This approach ensures that the estimated impact reflects a broad understanding of the socio-economic costs associated with air pollution, providing a standardized measure of the financial burden that these emissions impose on society."
+  },
+  {
+    "query": "What are the differences in shopping preferences for apparel between offline and online modes?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "earthlinkweb-150213112111-conversion-gate02_95",
+        "quote_id": "earthlinkweb-150213112111-conversion-gate02_95_text8"
+      },
+      {
+        "doc": "earthlinkweb-150213112111-conversion-gate02_95",
+        "quote_id": "earthlinkweb-150213112111-conversion-gate02_95_text12"
+      },
+      {
+        "doc": "indonesiamobilemarketresearch-ag-150106055934-conversion-gate02_95",
+        "quote_id": "indonesiamobilemarketresearch-ag-150106055934-conversion-gate02_95_text8"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "PP_2020.08.06_COVID-19-Restrictions_FINAL-1",
+        "path": "images/PP_2020.08.06_COVID-19-Restrictions_FINAL-1_image10.jpg"
+      },
+      {
+        "doc": "0e94b4197b10096b1f4c699701570fbf",
+        "path": "images/0e94b4197b10096b1f4c699701570fbf_image16.jpg"
+      },
+      {
+        "doc": "earthlinkweb-150213112111-conversion-gate02_95",
+        "path": "images/earthlinkweb-150213112111-conversion-gate02_95_image10.jpg"
+      }
+    ],
+    "retrieval_ms": 76,
+    "generation_ms": 5118,
+    "total_ms": 5194,
+    "test_id": "TEST_521",
+    "gold_quote_ids": [],
+    "reference": "When comparing shopping preferences for apparel between offline and online modes, there is a notable difference:\n\n- **Offline Shopping:** A significant percentage of respondents, 79.2%, prefer purchasing apparel offline. This indicates that a majority of consumers still favor physical stores for buying clothes, possibly due to the ability to try on items, immediate possession, and the tactile experience.\n\n- **Online Shopping:** In contrast, 67.1% of respondents have bought apparel online. Despite being less than offline purchases, this still represents a large portion of the market, highlighting the convenience and variety offered by online platforms.\n\n![Offline and Online Shopping Preferences](image5)\n\nThis chart clearly illustrates that while apparel is the most purchased category in both offline and online shopping, there is a higher preference for buying apparel offline. The tactile experience and instant gratification of offline shopping could be key reasons for this trend."
+  },
+  {
+    "query": "How does the level of concern about unemployment differ between GCC and Non-GCC regions?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "PG_2021.03.04_US-Views-on-China_FINAL",
+        "quote_id": "PG_2021.03.04_US-Views-on-China_FINAL_text4"
+      },
+      {
+        "doc": "NYSE_PG_2022",
+        "quote_id": "NYSE_PG_2022_text7"
+      },
+      {
+        "doc": "earlybird-110722143746-phpapp02_95",
+        "quote_id": "earlybird-110722143746-phpapp02_95_text11"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "asdaaburson-marstellerarabyouthsurvey2014-140407100615-phpapp01_95",
+        "path": "images/asdaaburson-marstellerarabyouthsurvey2014-140407100615-phpapp01_95_image13.jpg"
+      },
+      {
+        "doc": "8e7c4cb542ad160f80fb3d795ada35d8",
+        "path": "images/8e7c4cb542ad160f80fb3d795ada35d8_image9.jpg"
+      },
+      {
+        "doc": "PS_2018.01.09_STEM_FINAL",
+        "path": "images/PS_2018.01.09_STEM_FINAL_image17.jpg"
+      }
+    ],
+    "retrieval_ms": 98,
+    "generation_ms": 5189,
+    "total_ms": 5288,
+    "test_id": "TEST_489",
+    "gold_quote_ids": [],
+    "reference": "The data shows a distinct difference in the level of concern about unemployment between GCC and Non-GCC regions.\n\n![GCC vs Non-GCC Unemployment Concern](image5)\n\nFrom the bar chart, it is evident that individuals in Non-GCC regions express a higher level of concern about unemployment, with 55% indicating they are very concerned[8][2]. In contrast, only 39% of those in GCC regions express a similar level of concern[8][2]. This suggests that unemployment is perceived as a more significant issue in Non-GCC areas compared to GCC areas."
+  },
+  {
+    "query": "How do the LANI and CHAI datasets differ in terms of the types and frequencies of navigation instruction categories?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "2306.05425v1",
+        "quote_id": "2306.05425v1_text7"
+      },
+      {
+        "doc": "D18-1287",
+        "quote_id": "D18-1287_text12"
+      },
+      {
+        "doc": "D18-1287",
+        "quote_id": "D18-1287_text7"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "2306.05425v1",
+        "path": "images/2306.05425v1_image7.jpg"
+      },
+      {
+        "doc": "D18-1003",
+        "path": "images/D18-1003_image4.jpg"
+      },
+      {
+        "doc": "D18-1287",
+        "path": "images/D18-1287_image5.jpg"
+      }
+    ],
+    "retrieval_ms": 96,
+    "generation_ms": 4991,
+    "total_ms": 5087,
+    "test_id": "TEST_1536",
+    "gold_quote_ids": [],
+    "reference": "The LANI and CHAI datasets differ in several significant ways regarding the types and frequencies of navigation instruction categories. This can be observed in the following comparison tables and qualitative data analysis provided across the dataset documentation. Below is a detailed comparison based on the evidence provided in the figures and tables from the dataset documentation.\n\nThe summary statistics table below shows various metrics for the LANI and CHAI datasets:\n\n![Dataset Statistic](image3)\n\nTo understand the specific differences in navigation instruction categories, we refer to the qualitative analysis table which highlights the various categories along with their frequencies and examples:\n\n![Qualitative Analysis](image2)\n\n**Spatial relations between locations**:\n- LANI: 123 occurrences\n- CHAI: 52 occurrences\n\n**Conjunctions of two or more locations**:\n- LANI: 36 occurrences\n- CHAI: 5 occurrences\n\n**Temporal coordination of sub-goals**:\n- LANI: 65 occurrences\n- CHAI: 68 occurrences\n\n**Constraints on the shape of trajectory**:\n- LANI: 94 occurrences\n- CHAI: 0 occurrences\n\n**Co-reference**:\n- LANI: 32 occurrences\n- CHAI: 18 occurrences\n\n**Comparatives**:\n- LANI: 2 occurrences\n- CHAI: 0 occurrences\n\nFrom the above analysis, we see that the LANI dataset has more frequent occurrences in categories such as spatial relations, conjunctions of locations, trajectory constraints, and co-reference. On the other hand, the CHAI dataset has a higher frequency of temporal coordination of sub-goals. Additionally, some categories, such as comparatives and trajectory constraints, are either less frequent or absent in the CHAI dataset compared to LANI.\n\nThis detailed comparison highlights the differences in the nature and complexity of the navigation instructions between the two datasets, offering insights into how they could be used for different types of navigation and language understanding tasks."
+  },
+  {
+    "query": "How do the DS-DST and DS-Picklist methods compare in terms of accuracy for different slot types in the MultiWOZ 2.1 dataset, and what are the specific challenges faced by DS-Span?",
+    "answer": "The information was not found in the retrieved documents.",
+    "arch_name": "Query Expansion RAG",
+    "mode": "multimodal",
+    "sources_text": [
+      {
+        "doc": "2020.starsem-1.17",
+        "quote_id": "2020.starsem-1.17_text5"
+      },
+      {
+        "doc": "P19-1041",
+        "quote_id": "P19-1041_text3"
+      },
+      {
+        "doc": "2020.acl-main.45",
+        "quote_id": "2020.acl-main.45_text8"
+      }
+    ],
+    "sources_image": [
+      {
+        "doc": "D18-1287",
+        "path": "images/D18-1287_image7.jpg"
+      },
+      {
+        "doc": "P18-2092",
+        "path": "images/P18-2092_image0.jpg"
+      },
+      {
+        "doc": "P19-1078",
+        "path": "images/P19-1078_image3.jpg"
+      }
+    ],
+    "retrieval_ms": 80,
+    "generation_ms": 5324,
+    "total_ms": 5403,
+    "test_id": "TEST_3583",
+    "gold_quote_ids": [],
+    "reference": "The comparison between DS-DST and DS-Picklist methods reveals that both methods perform similarly across several slot types but show notable differences in accuracy for certain slots. For example, both methods exhibit high accuracy for the 'hotel-internet' slot, with DS-DST achieving 95.72% and DS-Picklist 94.54%. However, for the 'taxi-leave at' slot, DS-DST shows 0.00% accuracy, while DS-Picklist has a significantly higher accuracy of 43.84% (Figure 2). This suggests that DS-Picklist can recover values in cases where DS-DST fails due to its reliance on pre-defined lists of values.\n\nThe challenges faced by DS-Span are evident in its inability to extract ground-truth values for certain slots that do not match spans in the dialogue context. For instance, DS-Span has 73 unfound instances for the 'taxi-leave at' slot out of 364 relative turns, indicating a significant gap in its coverage (Figure 2). This is further elaborated in the error analysis[4], where it is noted that DS-Span struggles with span-based slots like 'taxi-leave at' and 'train-arrive by', leading to higher error rates (screenshot page 2). In contrast, DS-DST and DS-Picklist can leverage their respective mechanisms to handle categorical slots more effectively (screenshot page 1).\n\n![Domain Slots](image5)\n\nOverall, DS-DST and DS-Picklist offer robust performance across various slot types, with DS-Picklist showing a slight edge in scenarios where pre-defined value lists are beneficial. DS-Span, while useful, is limited by its dependence on string matching within dialogue contexts, making it less effective for slots without explicit span matches.\n\n![Slot Statistics](image3)"
+  }
+]

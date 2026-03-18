@@ -1,0 +1,156 @@
+{
+  "timestamp": "2026-03-16T23:06:56.327568",
+  "n_questions": 150,
+  "architectures": {
+    "1": {
+      "name": "Naive Multimodal RAG",
+      "combined": {
+        "hit_rate": 0.3085,
+        "recall@3": 0.1292,
+        "precision@3": 0.1277,
+        "mrr": 0.2074,
+        "ndcg@3": 0.1451
+      },
+      "text": {
+        "hit_rate": 0.266,
+        "recall@3": 0.104,
+        "precision@3": 0.117,
+        "mrr": 0.1915,
+        "ndcg@3": 0.1326
+      },
+      "image": {
+        "hit_rate": 0.4574,
+        "recall@3": 0.2758,
+        "precision@3": 0.1986,
+        "mrr": 0.3422,
+        "ndcg@3": 0.2768
+      },
+      "latency_s": 0.109
+    },
+    "2": {
+      "name": "Hybrid RAG + RRF",
+      "combined": {
+        "hit_rate": 0.3404,
+        "recall@3": 0.1179,
+        "precision@3": 0.1383,
+        "mrr": 0.2199,
+        "ndcg@3": 0.1477
+      },
+      "text": {
+        "hit_rate": 0.3191,
+        "recall@3": 0.1182,
+        "precision@3": 0.1348,
+        "mrr": 0.2128,
+        "ndcg@3": 0.1459
+      },
+      "image": {
+        "hit_rate": 0.4787,
+        "recall@3": 0.2654,
+        "precision@3": 0.1773,
+        "mrr": 0.3369,
+        "ndcg@3": 0.2516
+      },
+      "latency_s": 0.134
+    },
+    "3": {
+      "name": "Metadata-Filtered RAG",
+      "combined": {
+        "hit_rate": 0.3085,
+        "recall@3": 0.1299,
+        "precision@3": 0.1241,
+        "mrr": 0.2057,
+        "ndcg@3": 0.1422
+      },
+      "text": {
+        "hit_rate": 0.2766,
+        "recall@3": 0.1047,
+        "precision@3": 0.1135,
+        "mrr": 0.195,
+        "ndcg@3": 0.1306
+      },
+      "image": {
+        "hit_rate": 0.4574,
+        "recall@3": 0.2758,
+        "precision@3": 0.195,
+        "mrr": 0.3351,
+        "ndcg@3": 0.2771
+      },
+      "latency_s": 0.091
+    },
+    "4": {
+      "name": "Late Fusion RAG",
+      "combined": {
+        "hit_rate": 0.2872,
+        "recall@3": 0.1195,
+        "precision@3": 0.1206,
+        "mrr": 0.1844,
+        "ndcg@3": 0.131
+      },
+      "text": {
+        "hit_rate": 0.2553,
+        "recall@3": 0.0947,
+        "precision@3": 0.1064,
+        "mrr": 0.1684,
+        "ndcg@3": 0.1133
+      },
+      "image": {
+        "hit_rate": 0.4043,
+        "recall@3": 0.2233,
+        "precision@3": 0.1844,
+        "mrr": 0.2979,
+        "ndcg@3": 0.236
+      },
+      "latency_s": 0.088
+    },
+    "5": {
+      "name": "Query Expansion RAG",
+      "combined": {
+        "hit_rate": 0.3511,
+        "recall@3": 0.1531,
+        "precision@3": 0.1454,
+        "mrr": 0.2305,
+        "ndcg@3": 0.1649
+      },
+      "text": {
+        "hit_rate": 0.2979,
+        "recall@3": 0.1173,
+        "precision@3": 0.1312,
+        "mrr": 0.2092,
+        "ndcg@3": 0.1465
+      },
+      "image": {
+        "hit_rate": 0.4787,
+        "recall@3": 0.2968,
+        "precision@3": 0.2092,
+        "mrr": 0.3635,
+        "ndcg@3": 0.297
+      },
+      "latency_s": 0.112
+    },
+    "6": {
+      "name": "Full Proposed (CDE)",
+      "combined": {
+        "hit_rate": 0.3298,
+        "recall@3": 0.143,
+        "precision@3": 0.1277,
+        "mrr": 0.2057,
+        "ndcg@3": 0.1456
+      },
+      "text": {
+        "hit_rate": 0.2128,
+        "recall@3": 0.085,
+        "precision@3": 0.1028,
+        "mrr": 0.1613,
+        "ndcg@3": 0.1087
+      },
+      "image": {
+        "hit_rate": 0.4255,
+        "recall@3": 0.2271,
+        "precision@3": 0.25,
+        "mrr": 0.3156,
+        "ndcg@3": 0.2474
+      },
+      "latency_s": 1.472
+    }
+  }
+}

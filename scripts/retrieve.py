@@ -84,7 +84,7 @@ class Retriever:
         except Exception as e:
             print(f"❌ Error searching images by text: {e}")
             raise
--
+
     def search_images_by_image(self, image_path: str, top_k: int = None) -> List[Any]:
 
         top_k = top_k or config.TOP_K_IMAGE

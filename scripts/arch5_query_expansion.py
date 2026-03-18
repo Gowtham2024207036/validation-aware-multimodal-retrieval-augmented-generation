@@ -136,6 +136,24 @@ def rrf_fuse(ranked_lists: list[list[dict]], k: int = RRF_K) -> list[dict]:
     return out
 
 
+
+KNOWN_COMPANIES = {
+    "costco": "COSTCO", "amazon": "AMAZON", "apple": "APPLE",
+    "netflix": "NETFLIX", "tesla": "TESLA", "microsoft": "MICROSOFT",
+    "google": "GOOGLE", "alphabet": "GOOGLE", "walmart": "WALMART",
+    "bestbuy": "BESTBUY", "best buy": "BESTBUY", "target": "TARGET",
+    "nike": "NIKE", "adobe": "ADOBE", "salesforce": "SALESFORCE",
+    "inditex": "INDITEX", "nestle": "NSRGY",
+}
+
+def _extract_company(query: str) -> str:
+    """Return uppercase company key if found in query, else empty string."""
+    q = query.lower()
+    for kw, code in KNOWN_COMPANIES.items():
+        if kw in q:
+            return code
+    return ""
+
 def retrieve(query: str, models: SharedModels) -> dict:
     sub_queries = generate_sub_queries(query)
     print(f"  [Arch5] {len(sub_queries)} sub-queries generated:")
@@ -176,8 +194,26 @@ def retrieve(query: str, models: SharedModels) -> dict:
     fused_text  = rrf_fuse(all_text_lists)  if all_text_lists  else []
     fused_image = rrf_fuse(all_image_lists) if all_image_lists else []
 
+    # Company-aware image filtering:
+    # CLIP retrieves visually similar images regardless of company.
+    # Post-filter: if query mentions a known company, prefer images from that doc.
+    company_filter = _extract_company(query)
+    if company_filter and fused_image:
+        same_co = [h for h in fused_image if company_filter in h.get("doc_name","").upper()]
+        if same_co:
+            fused_image = same_co   # only keep same-company images
+
+    final_text  = deduplicate(fused_text,  TOP_N)
+    final_image = deduplicate(fused_image, TOP_N)
+
+    # Only show images from documents that match the top text results
+    if final_text:
+        top_docs        = set(h.get("doc_name","") for h in final_text if h.get("doc_name"))
+        same_doc_images = [h for h in final_image if h.get("doc_name","") in top_docs]
+        final_image     = same_doc_images  # empty list if no matching images — that's correct
+
     return {
-        "text":        deduplicate(fused_text,  TOP_N),
-        "image":       deduplicate(fused_image, TOP_N),
+        "text":        final_text,
+        "image":       final_image,
         "sub_queries": sub_queries,
     }

@@ -49,3 +49,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # -----------------------------
 DOCUMENT_FOLDER = os.path.join(BASE_DIR, "sample_docs")
 VECTOR_STORAGE = os.path.join(BASE_DIR, "storage")
+
+# Reranker Configuration
+RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+RERANKER_TOP_K = 5

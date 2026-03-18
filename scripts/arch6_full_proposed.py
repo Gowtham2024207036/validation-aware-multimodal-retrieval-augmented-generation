@@ -28,7 +28,7 @@ from base_retriever import SharedModels, tokenize, deduplicate
 from context_decision_engine import ContextDecisionEngine
 import config
 
-TOP_N     = 3
+TOP_N     = 5
 CANDIDATE = 50
 RRF_K     = 60
 
@@ -85,8 +85,126 @@ def _bm25_candidates(bm25, records, query_tokens, n):
              **records[i]["payload"]} for i in top_idx]
 
 
+
+KNOWN_COMPANIES = {
+    "costco": "COSTCO", "amazon": "AMAZON", "apple": "APPLE",
+    "netflix": "NETFLIX", "tesla": "TESLA", "microsoft": "MICROSOFT",
+    "google": "GOOGLE", "alphabet": "GOOGLE", "walmart": "WALMART",
+    "bestbuy": "BESTBUY", "best buy": "BESTBUY", "target": "TARGET",
+    "nike": "NIKE", "adobe": "ADOBE", "salesforce": "SALESFORCE",
+    "inditex": "INDITEX", "nestle": "NSRGY",
+}
+
+# Education / government document keyword expansion
+# When query contains these terms, expand to help BM25 find the right doc
+EDUCATION_EXPANSIONS = {
+    "scholarship": "scholarship fee waiver tuition concession financial aid",
+    "tnea": "TNEA tamil nadu engineering admissions counseling",
+    "sc st": "scheduled caste scheduled tribe SC SCA ST reservation",
+    "sc/st": "scheduled caste scheduled tribe SC SCA ST reservation",
+    "sc ": "scheduled caste SC reservation community",
+    "obc": "other backward class OBC BC MBC reservation",
+    "admission": "admission eligibility counseling rank merit list",
+    "cutoff": "cutoff rank merit list score opening closing",
+    "eligibility": "eligibility qualification marks percentage criteria",
+    "reservation": "reservation quota community category seats",
+    "anna university": "Anna University CEG MIT Guindy engineering",
+}
+
+def _expand_education_query(query: str) -> str:
+    """Expand education/government queries with domain-specific terms."""
+    q_lower = query.lower()
+    expansions = []
+    for keyword, expansion in EDUCATION_EXPANSIONS.items():
+        if keyword in q_lower:
+            expansions.append(expansion)
+    if expansions:
+        return query + " " + " ".join(expansions)
+    return query
+
+def _extract_company(query: str) -> str:
+    """Return uppercase company key if found in query, else empty string."""
+    q = query.lower()
+    for kw, code in KNOWN_COMPANIES.items():
+        if kw in q:
+            return code
+    return ""
+
+
+def _direct_lookup_by_docname(query: str, client, top_n: int = TOP_N) -> tuple[list, list]:
+    """
+    If query mentions a specific doc_name stored in Qdrant,
+    fetch those chunks directly using a scroll filter — bypasses CLIP/BM25.
+    Returns (text_hits, image_hits) or ([], []) if no doc_name match found.
+    """
+    from qdrant_client.http import models as qmodels
+    import re
+
+    # Extract candidate doc_name tokens from query (uppercase identifiers)
+    candidates = re.findall(r'[A-Z][A-Z0-9_\-]{4,}', query.upper())
+
+    # Also check for common document name patterns with numbers/underscores
+    # e.g. "2_INFORMATION_BROCHURE" starts with digit
+    digit_candidates = re.findall(r'\d+_[A-Z][A-Z0-9_]{3,}', query.upper())
+    candidates = list(set(candidates + digit_candidates))
+
+    if not candidates:
+        return [], []
+
+    text_hits  = []
+    image_hits = []
+
+    for candidate in candidates:
+        # Try text collection
+        try:
+            results, _ = client.scroll(
+                collection_name=config.TEXT_COLLECTION,
+                scroll_filter=qmodels.Filter(
+                    must=[qmodels.FieldCondition(
+                        key="doc_name",
+                        match=qmodels.MatchValue(value=candidate)
+                    )]
+                ),
+                limit=top_n,
+                with_payload=True,
+                with_vectors=False,
+            )
+            for p in results:
+                hit = {"id": p.id, "rrf_score": 0.1, **p.payload}
+                text_hits.append(hit)
+        except Exception:
+            pass
+
+        # Try image collection
+        try:
+            results, _ = client.scroll(
+                collection_name=config.IMAGE_COLLECTION,
+                scroll_filter=qmodels.Filter(
+                    must=[qmodels.FieldCondition(
+                        key="doc_name",
+                        match=qmodels.MatchValue(value=candidate)
+                    )]
+                ),
+                limit=top_n,
+                with_payload=True,
+                with_vectors=False,
+            )
+            for p in results:
+                hit = {"id": p.id, "rrf_score": 0.1, **p.payload}
+                image_hits.append(hit)
+        except Exception:
+            pass
+
+    return text_hits, image_hits
+
 def retrieve(query: str, models: SharedModels) -> dict:
+    # Step 0: Direct doc_name lookup — if query mentions an uploaded document,
+    # fetch it directly from Qdrant without relying on similarity search
+    direct_text, direct_image = _direct_lookup_by_docname(query, models.client)
+
+    # Expand with both company aliases and education terms
     expanded = expand_query(query)
+    expanded = _expand_education_query(expanded)
 
     # ── Stage 1: Hybrid Retrieval (same as arch2) ──────────────────
     bm25_text = _bm25_candidates(
@@ -127,6 +245,12 @@ def retrieve(query: str, models: SharedModels) -> dict:
     fused_image = rrf_fuse([bm25_img,  vec_img ])[:CANDIDATE]
 
     # ── Stage 2: Context Decision Engine (CDE) ─────────────────────
+    # Prepend direct lookup results (uploaded docs) before CDE validation
+    if direct_text:
+        fused_text  = direct_text  + fused_text
+    if direct_image:
+        fused_image = direct_image + fused_image
+
     cde = get_cde()
     validated = cde.validate(
         query      = query,
@@ -136,7 +260,57 @@ def retrieve(query: str, models: SharedModels) -> dict:
     )
 
     # Final deduplication by content (same as other architectures)
+    # Priority 1: if query mentions a specific doc_name that exists in results,
+    # boost those results to the top (handles uploaded documents)
+    query_words = set(query.upper().replace("-","_").replace(" ","_").split("_"))
+    query_words |= set(query.upper().split())
+
+    def doc_mentioned_in_query(doc_name: str) -> bool:
+        if not doc_name:
+            return False
+        # Check if significant parts of doc_name appear in query
+        parts = [p for p in doc_name.upper().replace("-","_").split("_") if len(p) > 3]
+        return sum(1 for p in parts if p in query.upper()) >= 2
+
+    # Boost images whose doc_name is mentioned in query
+    boosted_imgs = [h for h in validated["image"] if doc_mentioned_in_query(h.get("doc_name",""))]
+    other_imgs   = [h for h in validated["image"] if not doc_mentioned_in_query(h.get("doc_name",""))]
+    if boosted_imgs:
+        validated["image"] = boosted_imgs + other_imgs
+
+    # Boost text whose doc_name is mentioned in query
+    boosted_text = [h for h in validated["text"] if doc_mentioned_in_query(h.get("doc_name",""))]
+    other_text   = [h for h in validated["text"] if not doc_mentioned_in_query(h.get("doc_name",""))]
+    if boosted_text:
+        validated["text"] = boosted_text + other_text
+
+    # Priority 2: company-aware filter as fallback
+    company_filter = _extract_company(query)
+    if company_filter and not boosted_imgs and validated["image"]:
+        same_co = [h for h in validated["image"] if company_filter in h.get("doc_name","").upper()]
+        if same_co:
+            validated["image"] = same_co
+
+    final_text  = deduplicate(validated["text"],  TOP_N)
+    final_image = deduplicate(validated["image"], TOP_N)
+
+    # Smart image filter:
+    # If top text results are from specific documents, only keep images
+    # from those same documents. Prevents unrelated images from appearing
+    # when the document has no relevant images (e.g. text-only PDFs).
+    if final_text:
+        top_docs = set(h.get("doc_name","") for h in final_text if h.get("doc_name"))
+        same_doc_images = [h for h in final_image if h.get("doc_name","") in top_docs]
+        # Only filter if we have matching images — otherwise keep all
+        if same_doc_images:
+            final_image = same_doc_images
+        elif final_text:
+            # No images from the relevant document — return empty image list
+            # User gets text answer without irrelevant images cluttering the UI
+            final_image = []
+
     return {
-        "text":  deduplicate(validated["text"],  TOP_N),
-        "image": deduplicate(validated["image"], TOP_N),
+        "text":  final_text,
+        "image": final_image,
+        "sub_queries": sub_qs if "sub_qs" in dir() else [],
     }
