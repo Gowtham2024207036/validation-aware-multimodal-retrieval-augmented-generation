@@ -1,27 +1,29 @@
-# Validation-Aware Retrieval Augmented Generation for Reliable Document Question Answering using Domain Interaction Transformer
+# Multimodal RAG for Document Question Answering
 
-## Overview
-This project implements a modality-aware RAG system for document question answering across text and image content.
+A comprehensive system with 6 progressive RAG architectures for multimodal document QA, featuring a novel Context Decision Engine (CDE) validation layer.
 
-## Architecture
-- Separate vector collections per modality (text, image)
-- Text embeddings: all-mpnet-base-v2 (768-d)
-- Image embeddings: CLIP ViT-B/32 (512-d)
-- Vector database: Qdrant (HNSW indexing)
+## Architectures
 
-## Dataset
-MMDocRAG (train/dev/eval splits)
+1. **Naive Multimodal RAG** - Pure dense vector search (baseline)
+2. **Hybrid RAG + RRF** - BM25 + dense vectors with Reciprocal Rank Fusion
+3. **Metadata-Filtered RAG** - Entity extraction + metadata pre-filtering
+4. **Late Fusion RAG** - Weighted score fusion between modalities
+5. **Query Expansion RAG** - Multi-query expansion with RRF
+6. **Full Proposed (CDE)** - Complete system with Context Decision Engine
 
 ## Setup
 
 ```bash
-conda env create -f environment.yml
-conda activate mmrag
+# Clone repository
+git clone <your-repo>
+cd multimodal-rag
 
-## Start Qdrant
-```bash
-docker run -d --name qdrant_mmrag -p 6333:6333 qdrant/qdrant 
+# Install dependencies
+pip install -r requirements.txt
 
+# Start Qdrant
+docker-compose up -d
 
-```bash
-python scripts/init_qdrant.py
+# Start LM Studio with Qwen2.5-VL-7B
+# Download from: https://lmstudio.ai/
+# Load model and start server on port 1234
