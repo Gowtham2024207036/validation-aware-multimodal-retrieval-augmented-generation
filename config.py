@@ -50,6 +50,20 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 DOCUMENT_FOLDER = os.path.join(BASE_DIR, "sample_docs")
 VECTOR_STORAGE = os.path.join(BASE_DIR, "storage")
 
+# Add these missing configurations:
+
 # Reranker Configuration
 RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 RERANKER_TOP_K = 5
+
+# CDE Configuration
+CDE_MODEL_PATH = os.path.join(BASE_DIR, "models", "cde")
+VALIDATION_MODEL_PATH = os.path.join(BASE_DIR, "models", "validation")
+MIN_CDE_CONFIDENCE = 0.20
+REDUNDANCY_THRESHOLD = 0.90
+
+# LM Studio Configuration
+LM_STUDIO_BASE_URL = os.getenv("LM_STUDIO_BASE_URL", "http://localhost:1234")
+LM_STUDIO_MODEL = os.getenv("LM_STUDIO_MODEL", "qwen2.5-vl-7b-instruct")
+LM_STUDIO_TIMEOUT = int(os.getenv("LM_STUDIO_TIMEOUT", "120"))
+
