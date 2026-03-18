@@ -15,7 +15,7 @@ A comprehensive system with 6 progressive RAG architectures for multimodal docum
 
 ```bash
 # Clone repository
-git clone <your-repo>
+git clone https://github.com/Gowtham2024207036/validation-aware-multimodal-retrieval-augmented-generation
 cd multimodal-rag
 
 # Install dependencies
