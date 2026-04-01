@@ -1,0 +1,29 @@
+Top-5 Validated Chunks (after re-ranking by confidence):
+1. ID: 3
+   Doc: COSTCO_2021_10K, Page: None
+   Text: Current financial liabilities have fair values that approximate their carrying values. Long-term financial liabilities include the Company's long-term debt, which are recorded on the balance sheet at ...
+   Score: 0.3396
+
+2. ID: 194
+   Doc: AMAZON_2017_10K, Page: None
+   Text: Our long-term debt was  $\S7.7$   billion and  $\mathbb{S}24.7$   billion as of December 31, 2016 and 2017 . Our other long-term liabilities were  $\S12.6$   billion and  $\S21.0$   billion as of Dece...
+   Score: 0.4449
+
+3. ID: 811
+   Doc: NYSE_DHR_2020, Page: None
+   Text: Long-Term Debt (\$21,193 for 2020 and \$21,517 for 2019) plus Notes Payable and Current Portion of Long-Term Debt (\$11 for 2020 and \$212 for 2019) ...
+   Score: 0.4300
+
+4. ID: 818
+   Doc: NYSE_DHR_2020, Page: None
+   Text: Total debt was approximately  $\S21.2$  billion and  $\S21.7$  billion as of December 31, 2020 and 2019, respectively, and notes payable and current portion of long-term debt was  $\S11$   million and...
+   Score: 0.3745
+
+5. ID: 734
+   Doc: COSTCO_2021_10K, Page: None
+   Text: COSTCO_2021_10K The table is a balance sheet that presents the financial position of a company (most likely Costco, as inferred from the reference to "Costco stockholders' equity") as of two different...
+   Score: 0.8554
+
+
+Confidence threshold: 0.20
+Selected 5 chunks.

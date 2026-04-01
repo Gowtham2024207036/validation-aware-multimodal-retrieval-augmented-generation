@@ -1,0 +1,8 @@
+Original query: What is the long-term debt of Costco in FY2021?
+Expanded sub-queries:
+  1. What is the long-term debt of Costco in FY2021?
+  2. COSTCO 2021 annual report 10K financial statements
+  3. What is the long term debt of Costco in FY2021?
+  4. What is the LTD of Costco in FY2021?
+  5. long term debt financial ratio definition calculation
+Extracted entities: company=COSTCO, year=2021

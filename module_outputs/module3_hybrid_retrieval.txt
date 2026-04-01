@@ -1,0 +1,59 @@
+--- BM25 Text (top 10) ---
+  1. ID 1: score=32.50
+  2. ID 599: score=32.34
+  3. ID 677: score=28.76
+  4. ID 5: score=26.72
+  5. ID 482: score=25.76
+  6. ID 488: score=25.76
+  7. ID 3: score=25.32
+  8. ID 804: score=25.31
+  9. ID 6: score=25.28
+  10. ID 199: score=24.80
+
+--- Dense Text (top 10) ---
+  1. ID 194: score=0.6857
+  2. ID 1: score=0.6265
+  3. ID 817: score=0.6202
+  4. ID 6: score=0.6117
+  5. ID 811: score=0.6099
+  6. ID 671: score=0.6007
+  7. ID 192: score=0.5908
+  8. ID 1510: score=0.5908
+  9. ID 816: score=0.5831
+  10. ID 492: score=0.5810
+
+--- BM25 Image (top 10) ---
+  1. ID 1: score=43.46
+  2. ID 5: score=40.95
+  3. ID 734: score=40.95
+  4. ID 4: score=28.77
+  5. ID 735: score=28.77
+  6. ID 733: score=27.84
+  7. ID 3: score=26.99
+  8. ID 770: score=25.91
+  9. ID 71: score=25.40
+  10. ID 85: score=25.35
+
+--- Dense Image (top 10) ---
+  1. ID 292: score=0.3230
+  2. ID 936: score=0.3171
+  3. ID 348: score=0.3171
+  4. ID 906: score=0.3171
+  5. ID 335: score=0.3159
+  6. ID 65: score=0.3155
+  7. ID 769: score=0.3155
+  8. ID 390: score=0.3150
+  9. ID 935: score=0.3149
+  10. ID 245: score=0.3143
+
+--- Top 50 RRF Scores (first 10) ---
+  1. ID 1: RRF=0.04892
+  2. ID 4: RRF=0.04123
+  3. ID 5: RRF=0.04009
+  4. ID 3: RRF=0.03886
+  5. ID 929: RRF=0.03138
+  6. ID 923: RRF=0.03020
+  7. ID 6: RRF=0.03012
+  8. ID 194: RRF=0.02938
+  9. ID 811: RRF=0.02821
+  10. ID 671: RRF=0.02781

@@ -1,0 +1,35 @@
+=== RETRIEVED TEXT PASSAGES ===
+
+
+[1] From: Costco 2021 10K
+Current financial liabilities have fair values that approximate their carrying values. Long-term financial liabilities include the Company's long-term debt, which are recorded on the balance sheet at issuance price and adjusted for un amortized discounts or premiums and debt issuance costs, and are being amortized to interest expense over the term of the loan. The estimated fair value of the Company's long-term debt is based primarily on reported market values, recently completed market transactions, and estimates based upon interest rates, maturities, and credit. 
+
+
+[2] From: Amazon 2017 10K
+Our long-term debt was  $\S7.7$   billion and  $\mathbb{S}24.7$   billion as of December 31, 2016 and 2017 . Our other long-term liabilities were  $\S12.6$   billion and  $\S21.0$   billion as of December 31, 2016 and 2017 . See Item 8 of Part II, “Financial Statements and Supplementary Data—Note 5—Long-Term Debt and Note 6—Other Long- Term Liabilities” for additional information. 
+
+
+[3] From: Nyse Dhr 2020
+Long-Term Debt (\$21,193 for 2020 and \$21,517 for 2019) plus Notes Payable and Current Portion of Long-Term Debt (\$11 for 2020 and \$212 for 2019) 
+
+
+[4] From: Nyse Dhr 2020
+Total debt was approximately  $\S21.2$  billion and  $\S21.7$  billion as of December 31, 2020 and 2019, respectively, and notes payable and current portion of long-term debt was  $\S11$   million and  $\S212$  million as of December 31, 2020 and 2019, respectively. As of December 31, 2020 the Company had the ability to incur approximately  $\S4.4$  billion of additional indebtedness in direct borrowings or under the outstanding commercial paper facilities based on the amounts available under the Company's  $\S5.0$  billion Five-Year Facility which were not being used to backstop outstanding commercial paper balances. As of December 31, 2020, the Company has classified  $\S611$   million of its borrowings outstanding under the euro-denominated commercial paper program and  $\S290$  million of borrowings outstanding under the 2021 Yen Notes as long-term debt in the accompanying Consolidated Balance Sheet as the Company has the intent and ability, as supported by availability under the F
+
+
+[5] From: Costco 2021 10K
+COSTCO_2021_10K The table is a balance sheet that presents the financial position of a company (most likely Costco, as inferred from the reference to "Costco stockholders' equity") as of two different dates: August 29, 2021, and August 30, 2020. It is structured into two main sections: 
+
+1. **Assets**: 
+   - Current Assets include Cash and cash equivalents, Short-term investments, Receivables (net), Merchandise inventories, and Other current assets. The total current assets sum up to $29,505 million for 2021 and $28,120 million for 2020.
+   - Other Assets include Property and equipment (net), Operating lease right-of-use assets, and Other long-term assets. Adding these to current assets gives Total Assets of $59,268 million for 2021 and $55,556 million for 2020.
+
+2. **Liabilities and Equity**:
+   - Current Liabilities consist of Accounts payable, Accrued salaries and benefits, Accrued member rewards, Deferred membership fees, Current portion of long-term debt, and Other current liabili
+
+
+=== QUESTION ===
+What is the long-term debt of Costco in FY2021?
+
+
+=== ANSWER ===

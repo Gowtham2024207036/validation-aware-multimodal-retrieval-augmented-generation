@@ -1,0 +1,2 @@
+Text points: 3003
+Image points: 1915
