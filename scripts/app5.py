@@ -391,7 +391,7 @@ class HybridDocumentQA:
     
     def __init__(self):
         print("=" * 60)
-        print("🚀 Initializing Hybrid Document QA System")
+        print("Initializing Validation Aware Document QA System")
         print("=" * 60)
         
         self.rag = RAGSystem()
@@ -470,8 +470,8 @@ CUSTOM_CSS = """
 with gr.Blocks(title="Hybrid Document QA System", css=CUSTOM_CSS) as app:
     
     gr.Markdown("""
-    # 📚 Hybrid Document Question Answering
-    ### RAG (text/images) + Structured Data (tables)
+    # Validation Aware Document Question Answering
+    ### 
     """)
     
     with gr.Row():

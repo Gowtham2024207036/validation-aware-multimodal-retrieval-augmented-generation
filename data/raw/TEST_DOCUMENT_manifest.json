@@ -1,8 +1,0 @@
-{
-  "doc_name": "TEST_DOCUMENT",
-  "pdf_path": "D:\\Phase-2\\code2\\sample_docs\\An_arXiv_Paper_Question-Answering_System_Based_on_Qwen_and_RAG.pdf",
-  "n_text": 23,
-  "n_images": 8,
-  "text_start_id": 2831,
-  "image_start_id": 1816
-}

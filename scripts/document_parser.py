@@ -160,14 +160,12 @@ class DocumentParser:
                         # Clean headers (remove None, empty strings)
                         headers = [h if h else f"Column_{i}" for i, h in enumerate(headers)]
                         
-                        # Process rows
                         rows = []
                         for row_data in table[1:]:
-                            # Skip empty rows
                             if not any(row_data):
                                 continue
                             
-                            # Ensure row has same length as headers
+                      
                             row_data = list(row_data)
                             while len(row_data) < len(headers):
                                 row_data.append(None)
@@ -175,9 +173,9 @@ class DocumentParser:
                             row_dict = dict(zip(headers, row_data[:len(headers)]))
                             rows.append(row_dict)
                         
-                        if rows:  # Only add if we have valid rows
+                        if rows:  
                             tables_data.append({
-                                "page": page_index + 1,  # 1-indexed
+                                "page": page_index + 1, 
                                 "table_index": table_index,
                                 "headers": headers,
                                 "rows": rows,

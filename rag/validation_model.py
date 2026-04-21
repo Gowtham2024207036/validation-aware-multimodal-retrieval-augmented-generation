@@ -27,10 +27,7 @@ class ValidationModel:
             raise
 
     def score(self, query: str, context: str) -> float:
-        """
-        Scores the relevance of a given context to the user's query.
-        Returns a probability float between 0.0 and 1.0.
-        """
+
         # Validate inputs to prevent tokenizer crashes
         if not query or not context:
             logger.warning("Empty query or context provided. Returning relevance score of 0.0.")
@@ -61,3 +58,30 @@ class ValidationModel:
             logger.error(f"Error during validation scoring for query '{query[:20]}...': {e}")
             # Fail safe: return 0.0 so bad context is rejected rather than crashing the app
             return 0.0
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #         """
+        # Scores the relevance of a given context to the user's query.
+        # Returns a probability float between 0.0 and 1.0.
+        # """

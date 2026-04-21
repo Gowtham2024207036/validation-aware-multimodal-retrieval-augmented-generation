@@ -1,104 +1,115 @@
 """
 compute_faithfulness.py
-Computes faithfulness score for the generated answer using an NLI model.
-Requires that demo_all_modules.py has been run.
+Compute faithfulness score for a generated answer using an NLI model.
+Uses sentence_transformers.CrossEncoder to avoid tokenizer issues.
 """
 
 import os
-import sys
 import re
 from pathlib import Path
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
 import numpy as np
+from sentence_transformers import CrossEncoder
 
-# Add project root
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+# Paths (adjust if your outputs are in a different folder)
 OUTPUT_DIR = Path("module_outputs")
-def load_nli_model():
-    model_name = "cross-encoder/nli-distilroberta-base"  # smaller and more stable
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name)
-    model.eval()
-    return tokenizer, model
+ANSWER_PATH = OUTPUT_DIR / "module6_answer_raw.txt"
+PROMPT_PATH = OUTPUT_DIR / "module6_prompt.txt"
 
-def split_into_claims(text):
-    """Simple sentence splitting (more sophisticated: use spaCy or nltk)."""
-    sentences = re.split(r'(?<=[.!?])\s+', text)
-    return [s.strip() for s in sentences if len(s.strip()) > 10]
+def load_nli_model(model_name="cross-encoder/nli-distilroberta-base"):
+    """Load NLI model using CrossEncoder."""
+    try:
+        return CrossEncoder(model_name)
+    except Exception as e:
+        print(f"Error loading {model_name}: {e}")
+        print("Trying fallback model cross-encoder/nli-deberta-v3-base...")
+        return CrossEncoder("cross-encoder/nli-deberta-v3-base")
 
-def entailment_prob(premise, hypothesis, tokenizer, model):
-    """Return probability of entailment (label 0 = contradiction, 1 = neutral, 2 = entailment)."""
-    inputs = tokenizer(premise, hypothesis, truncation=True, padding=True, max_length=512, return_tensors="pt")
-    with torch.no_grad():
-        logits = model(**inputs).logits
-        probs = torch.softmax(logits, dim=-1).cpu().numpy()[0]
-        # probs[2] is entailment probability
-        return probs[2]
+def split_sentences(text):
+    """Split text into sentences using regex."""
+    sentences = re.split(r'(?<=[.!?])\s+', text.strip())
+    # Filter out very short sentences (likely incomplete)
+    return [s for s in sentences if len(s) > 15]
+
+def get_entailment_prob(model, premise, hypothesis):
+    """Return probability of entailment (class 2)."""
+    scores = model.predict([(premise, hypothesis)], apply_softmax=True)[0]
+    # Order: [contradiction, neutral, entailment]
+    return scores[2]
+
+def compute_faithfulness(answer, context, model):
+    """Compute faithfulness score and hallucination rate."""
+    sentences = split_sentences(answer)
+    if not sentences:
+        return 1.0, 0.0, []
+
+    entail_scores = []
+    for sent in sentences:
+        prob = get_entailment_prob(model, context, sent)
+        entail_scores.append(prob)
+    faithfulness = np.mean(entail_scores)
+    hallucination_rate = sum(1 for p in entail_scores if p < 0.5) / len(sentences)
+    return faithfulness, hallucination_rate, entail_scores
+
+def extract_context_from_prompt(prompt_text):
+    """Extract the retrieved context from the prompt."""
+    # First try standard markers
+    start = prompt_text.find("=== RETRIEVED DOCUMENTS ===")
+    end = prompt_text.find("=== QUESTION ===")
+    if start != -1 and end != -1:
+        return prompt_text[start:end].strip()
+
+    # Fallback: find first chunk citation marker
+    idx = prompt_text.find("[1] From:")
+    if idx != -1:
+        return prompt_text[idx:].strip()
+
+    # Last resort: whole prompt (will likely give low score)
+    print("⚠️  Could not locate context markers. Using whole prompt as context.")
+    return prompt_text
 
 def main():
-    # Read the raw answer (module 6 output)
-    answer_path = OUTPUT_DIR / "module6_answer_raw.txt"
-    if not answer_path.exists():
-        print("No raw answer found. Run demo_all_modules.py first.")
+    # Check files exist
+    if not ANSWER_PATH.exists():
+        print(f"Answer file not found: {ANSWER_PATH}")
+        print("Run demo_all_modules.py first.")
         return
-    with open(answer_path, "r", encoding="utf-8") as f:
+    if not PROMPT_PATH.exists():
+        print(f"Prompt file not found: {PROMPT_PATH}")
+        return
+
+    with open(ANSWER_PATH, "r", encoding="utf-8") as f:
         answer = f.read().strip()
-    if not answer or "LM Studio offline" in answer:
-        print("Answer not available or LM Studio was offline.")
-        return
-
-    # Read the context from the prompt (module 6 prompt)
-    prompt_path = OUTPUT_DIR / "module6_prompt.txt"
-    if not prompt_path.exists():
-        print("No prompt found. Can't compute faithfulness without context.")
-        return
-    with open(prompt_path, "r", encoding="utf-8") as f:
+    with open(PROMPT_PATH, "r", encoding="utf-8") as f:
         prompt = f.read()
-    # Extract the context part (everything between "=== RETRIEVED DOCUMENTS ===" and "=== QUESTION ===")
-    context = ""
-    if "=== RETRIEVED DOCUMENTS ===" in prompt and "=== QUESTION ===" in prompt:
-        start = prompt.find("=== RETRIEVED DOCUMENTS ===")
-        end = prompt.find("=== QUESTION ===")
-        context = prompt[start:end].strip()
+
+    print("=== Answer (first 300 chars) ===")
+    print(answer[:300])
+    print("\n=== Prompt (first 300 chars) ===")
+    print(prompt[:300])
+
+    context = extract_context_from_prompt(prompt)
+    print(f"\n=== Extracted context length: {len(context)} characters ===")
+    if len(context) < 100:
+        print("⚠️  Context is very short. This may cause low faithfulness scores.")
+        print("Check that the prompt contains the retrieved chunks.")
     else:
-        print("Could not extract context from prompt. Using full prompt as context.")
-        context = prompt
+        print("Context preview (first 300 chars):")
+        print(context[:300])
 
-    # Load NLI model
-    print("Loading NLI model...")
-    tokenizer, model = load_nli_model()
-
-    # Split answer into claims
-    claims = split_into_claims(answer)
-    if not claims:
-        print("No claims extracted.")
+    if not context:
+        print("Error: No context extracted. Cannot compute faithfulness.")
         return
 
-    print(f"Answer has {len(claims)} claims.")
-    entail_scores = []
-    for i, claim in enumerate(claims, 1):
-        prob = entailment_prob(context, claim, tokenizer, model)
-        entail_scores.append(prob)
-        print(f"Claim {i}: {claim[:80]}...")
-        print(f"  Entailment probability: {prob:.3f}")
+    print("\nLoading NLI model...")
+    model = load_nli_model()
+    print("Computing faithfulness...")
+    faithfulness, hallucination_rate, entail_scores = compute_faithfulness(answer, context, model)
 
-    # Faithfulness = average entailment probability (or could be thresholded)
-    faithfulness = np.mean(entail_scores)
-    print(f"\nFaithfulness Score: {faithfulness:.3f}")
-
-    # Optionally also compute citation coverage
-    # Extract citations from answer (like [doc, page])
-    citations = re.findall(r'\[(.*?)(?:, Page (\d+))?\]', answer)
-    if citations:
-        # Check if each cited chunk exists in the context (simple string match)
-        existing = sum(1 for doc, page in citations if doc in context)
-        citation_coverage = existing / len(citations) if citations else 1.0
-        print(f"Citation coverage: {citation_coverage:.3f} ({existing}/{len(citations)})")
-        # Combine scores (e.g., average)
-        faithfulness = (faithfulness + citation_coverage) / 2
-        print(f"Combined Faithfulness (incl. citations): {faithfulness:.3f}")
+    print(f"\n=== RESULTS ===")
+    print(f"Number of sentences: {len(split_sentences(answer))}")
+    print(f"Faithfulness Score: {faithfulness:.4f}")
+    print(f"Hallucination Rate: {hallucination_rate:.4f} ({hallucination_rate*100:.1f}%)")
+    print(f"Per‑sentence entailment probabilities: {[round(p,3) for p in entail_scores]}")
 
 if __name__ == "__main__":
     main()
